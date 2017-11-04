@@ -39,7 +39,6 @@ public class Fonctions {
 		}
 		return CCFC;
 	}
-
 	public static int SizeMax(ArrayList<Object> Colonne1, ArrayList<Object> Colonne2, ArrayList<Object> Colonne3,
 			ArrayList<Object> Colonne4, ArrayList<Object> Colonne5, ArrayList<Object> Colonne6,
 			ArrayList<Object> Colonne7) {
@@ -60,9 +59,10 @@ public class Fonctions {
 		return SizeMax;
 	}
 
-	public static void RecupCarte(ArrayList<Object> Colonne0, ArrayList<Object> Colonne1, ArrayList<Object> Colonne2,
+	public static Carte RecupCarte(ArrayList<Object> Colonne0, ArrayList<Object> Colonne1, ArrayList<Object> Colonne2,
 			ArrayList<Object> Colonne3, ArrayList<Object> Colonne4, ArrayList<Object> Colonne5,
 			ArrayList<Object> Colonne6, ArrayList<Object> Colonne7, Carte Récup, int choix1) {
+
 		for (int i = 0; i != Colonne7.size(); i++) {
 
 			switch (choix1) {
@@ -70,6 +70,7 @@ public class Fonctions {
 			case 1: {
 				Récup = (Carte) Colonne0.get(0);
 				System.out.println(Récup);
+				return Récup;
 			}
 			case 2:
 				if (i < Colonne1.size()) // + CONDITION FACE CACHE
@@ -115,6 +116,7 @@ public class Fonctions {
 				}
 			}
 		}
+		return Récup;
 	}
 
 	public static void Affichage2(ArrayList<Object> Colonne1, ArrayList<Object> Colonne2, ArrayList<Object> Colonne3,
