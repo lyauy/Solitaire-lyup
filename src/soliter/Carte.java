@@ -13,7 +13,6 @@ public class Carte {
 	public String GetNumCarte() {
 		return NumeroCarte;
 	}
-
 	public String GetSymboleCarte() {
 		return Symbole;
 	}
