@@ -14,6 +14,7 @@ public class PlateauDeJeu {
 	ArrayList<Object> Colonne7 = new ArrayList<Object>();
 
 	ArrayList<Object> Colonne0 = new ArrayList<Object>();
+	private Scanner sc;
 
 	public PlateauDeJeu(ArrayList<Object> Paquet) {
 		Fonctions.DistributionColonne(Paquet, Colonne1, 1, 0);
@@ -52,13 +53,14 @@ public class PlateauDeJeu {
 	}
 
 	public void Menu() {
-		Scanner sc = new Scanner(System.in);
+		sc = new Scanner(System.in);
 		System.out.println(
 				"Que voulez-vous selectionner ? \n1. Une nouvelle Carte \n2. La carte de la 1ère Colonne\n3. La carte de la 2ième Colonne"
 						+ "\n4. La carte de la 3ième Colonne\n5. La carte de la 4ième Colonne\n6. La carte de la 5ième Colonne"
 						+ "\n7. La carte de la 6ième Colonne\n8. La carte de la 7ième Colonne\n9. La carte du Deck");
 		int choix1 = sc.nextInt();
-		// choix1.RecupCarte();
+		Carte Récup = Fonctions.RecupCarte(Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7, Récup, choix1);
+		// choix1.RecuFpCarte();
 		// switch (choix1){
 
 		if (choix1 != 1) {

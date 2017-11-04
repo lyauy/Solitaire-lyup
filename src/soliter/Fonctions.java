@@ -39,11 +39,11 @@ public class Fonctions {
 		}
 		return CCFC;
 	}
-	public static void RecupCarte(ArrayList<Object> Colonne0, ArrayList<Object> Colonne1, ArrayList<Object> Colonne2,
-			ArrayList<Object> Colonne3,
 
-			ArrayList<Object> Colonne4, ArrayList<Object> Colonne5, ArrayList<Object> Colonne6,
-			ArrayList<Object> Colonne7, Carte Récup, int choix1) {
+	public static Carte RecupCarte(ArrayList<Object> Colonne0, ArrayList<Object> Colonne1, ArrayList<Object> Colonne2,
+			ArrayList<Object> Colonne3, ArrayList<Object> Colonne4, ArrayList<Object> Colonne5,
+			ArrayList<Object> Colonne6, ArrayList<Object> Colonne7, Carte Récup, int choix1) {
+
 		for (int i = 0; i != Colonne7.size(); i++) {
 
 			switch (choix1) {
@@ -51,6 +51,7 @@ public class Fonctions {
 			case 1: {
 				Récup = (Carte) Colonne0.get(0);
 				System.out.println(Récup);
+				return Récup;
 			}
 			case 2:
 				if (i < Colonne1.size()) // + CONDITION FACE CACHE
@@ -96,6 +97,7 @@ public class Fonctions {
 				}
 			}
 		}
+		return Récup;
 	}
 
 	public static void Affichage2(ArrayList<Object> Colonne1, ArrayList<Object> Colonne2, ArrayList<Object> Colonne3,
@@ -107,49 +109,49 @@ public class Fonctions {
 				if (((Carte) Colonne1.get(i)).GetFaceCarte())
 					System.out.print(Colonne1.get(i) + "  ");
 				else
-					System.out.print("????????"+ "  ");
+					System.out.print("????????" + "  ");
 			} else
 				System.out.print("          ");
 			if (i < Colonne2.size()) {
 				if (((Carte) Colonne2.get(i)).GetFaceCarte())
 					System.out.print(Colonne2.get(i) + "  ");
 				else
-					System.out.print("????????"+ "  ");
+					System.out.print("????????" + "  ");
 			} else
 				System.out.print("          ");
 			if (i < Colonne3.size()) {
 				if (((Carte) Colonne3.get(i)).GetFaceCarte())
 					System.out.print(Colonne3.get(i) + "  ");
 				else
-					System.out.print("????????"+ "  ");
+					System.out.print("????????" + "  ");
 			} else
 				System.out.print("          ");
 			if (i < Colonne4.size()) {
 				if (((Carte) Colonne4.get(i)).GetFaceCarte())
 					System.out.print(Colonne4.get(i) + "  ");
 				else
-					System.out.print("????????"+ "  ");
+					System.out.print("????????" + "  ");
 			} else
 				System.out.print("          ");
 			if (i < Colonne5.size()) {
 				if (((Carte) Colonne5.get(i)).GetFaceCarte())
 					System.out.print(Colonne5.get(i) + "  ");
 				else
-					System.out.print("????????"+ "  ");
+					System.out.print("????????" + "  ");
 			} else
 				System.out.print("          ");
 			if (i < Colonne6.size()) {
 				if (((Carte) Colonne6.get(i)).GetFaceCarte())
 					System.out.print(Colonne6.get(i) + "  ");
 				else
-					System.out.print("????????"+ "  ");
+					System.out.print("????????" + "  ");
 			} else
 				System.out.print("          ");
 			if (i < Colonne7.size()) {
 				if (((Carte) Colonne7.get(i)).GetFaceCarte())
 					System.out.print(Colonne7.get(i) + "  ");
 				else
-					System.out.print("????????"+ "  ");
+					System.out.print("????????" + "  ");
 			} else
 				System.out.print("          ");
 			System.out.println("");
