@@ -28,11 +28,4 @@ public class Carte {
 	public String toString() { 
 	    return GetNumCarte()+" de "+GetSymboleCarte();
 	} 
-	public String AffichageC()
-	{
-		if (this.GetFaceCarte())
-			return this.toString();
-		else 
-			return "?";
-	}
 }
