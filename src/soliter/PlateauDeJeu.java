@@ -46,9 +46,9 @@ public class PlateauDeJeu {
 		System.out.println(
 				"\n------------------------------------------------- SOLITAIRE -------------------------------------------------");
 		System.out.println("[" + Colonne0.get(0) + "]\n\n");
-		Fonctions.Affichage(Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7);
+		Fonctions.Affichage2(Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7);
 		System.out.println(
-				"-------------------------------------------------------------------------------------------------------------");
+				"\n-------------------------------------------------------------------------------------------------------------");
 	}
 
 	public void Menu() {
