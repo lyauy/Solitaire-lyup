@@ -3,7 +3,7 @@ package soliter;
 import java.util.ArrayList;
 
 public class Fonctions {
-	public static String NumTranslate(int NbrNum) {
+	public static String NumTranslate(int NbrNum) { //Convertir les dernières cartes 11,12 et 13 en Valet (Va), Dame (Da) et Roi (Ro)
 		String NumCarte = "NULL";
 		switch (NbrNum) {
 		case 10:
@@ -31,7 +31,7 @@ public class Fonctions {
 		}
 	}
 
-	public static int CompteCartesFaceCachées(ArrayList<Carte> Colonne) {
+	public static int CompteCartesFaceCachées(ArrayList<Carte> Colonne) { //On met les cartes faces cachées de chaque colonne (sauf les dernières cartes de chaque colonne)
 		int CCFC = 0;
 		for (int i = 0; i != Colonne.size(); i++) {
 			if (!((Carte) Colonne.get(i)).GetFaceCarte())
