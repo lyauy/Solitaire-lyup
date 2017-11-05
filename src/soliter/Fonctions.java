@@ -42,7 +42,7 @@ public class Fonctions {
 
 	public static int SizeMax(ArrayList<Carte> Colonne1, ArrayList<Carte> Colonne2, ArrayList<Carte> Colonne3,
 			ArrayList<Carte> Colonne4, ArrayList<Carte> Colonne5, ArrayList<Carte> Colonne6,
-			ArrayList<Carte> Colonne7) {
+			ArrayList<Carte> Colonne7) { //On affecte à SizeMax la valeur de la taille d'une colonne
 
 		int SizeMax = Colonne1.size();
 		if (SizeMax < Colonne2.size())
@@ -150,7 +150,7 @@ public class Fonctions {
 	public static ArrayList<Carte> Choix1Colonne(int choix1, ArrayList<Carte> Colonne0, ArrayList<Carte> Colonne1,
 			ArrayList<Carte> Colonne2, ArrayList<Carte> Colonne3, ArrayList<Carte> Colonne4,
 			ArrayList<Carte> Colonne5, ArrayList<Carte> Colonne6, ArrayList<Carte> Colonne7) {
-		switch (choix1) {
+		switch (choix1) { //On retourne la colonne choisie par l'utilisateur (choix 1)
 		case 2:
 			return Colonne1;
 		case 3:
