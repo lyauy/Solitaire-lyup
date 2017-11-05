@@ -24,14 +24,14 @@ public class Fonctions {
 		return (NumCarte);
 	}
 
-	public static void DistributionColonne(ArrayList<Object> Paquet, ArrayList<Object> Colonne, int CarteDistrib,
+	public static void DistributionColonne(ArrayList<Carte> Paquet, ArrayList<Carte> Colonne, int CarteDistrib,
 			int IStart) {
 		for (int i = IStart; i != (CarteDistrib + IStart); i++) {
 			Colonne.add(Paquet.get(i));
 		}
 	}
 
-	public static int CompteCartesFaceCachées(ArrayList<Object> Colonne) {
+	public static int CompteCartesFaceCachées(ArrayList<Carte> Colonne) {
 		int CCFC = 0;
 		for (int i = 0; i != Colonne.size(); i++) {
 			if (!((Carte) Colonne.get(i)).GetFaceCarte())
@@ -40,9 +40,9 @@ public class Fonctions {
 		return CCFC;
 	}
 
-	public static int SizeMax(ArrayList<Object> Colonne1, ArrayList<Object> Colonne2, ArrayList<Object> Colonne3,
-			ArrayList<Object> Colonne4, ArrayList<Object> Colonne5, ArrayList<Object> Colonne6,
-			ArrayList<Object> Colonne7) {
+	public static int SizeMax(ArrayList<Carte> Colonne1, ArrayList<Carte> Colonne2, ArrayList<Carte> Colonne3,
+			ArrayList<Carte> Colonne4, ArrayList<Carte> Colonne5, ArrayList<Carte> Colonne6,
+			ArrayList<Carte> Colonne7) {
 
 		int SizeMax = Colonne1.size();
 		if (SizeMax < Colonne2.size())
@@ -60,9 +60,9 @@ public class Fonctions {
 		return SizeMax;
 	}
 
-	public static Carte RecupCarte(ArrayList<Object> Colonne0, ArrayList<Object> Colonne1, ArrayList<Object> Colonne2,
-			ArrayList<Object> Colonne3, ArrayList<Object> Colonne4, ArrayList<Object> Colonne5,
-			ArrayList<Object> Colonne6, ArrayList<Object> Colonne7, Carte Récup, int choix1) {
+	public static Carte RecupCarte(ArrayList<Carte> Colonne0, ArrayList<Carte> Colonne1, ArrayList<Carte> Colonne2,
+			ArrayList<Carte> Colonne3, ArrayList<Carte> Colonne4, ArrayList<Carte> Colonne5,
+			ArrayList<Carte> Colonne6, ArrayList<Carte> Colonne7, Carte Récup, int choix1) {
 
 		for (int i = 0; i != Colonne7.size(); i++) {
 
@@ -120,12 +120,12 @@ public class Fonctions {
 		return Récup;
 	}
 
-	public static void Affichage2(ArrayList<Object> Colonne1, ArrayList<Object> Colonne2, ArrayList<Object> Colonne3,
-			ArrayList<Object> Colonne4, ArrayList<Object> Colonne5, ArrayList<Object> Colonne6,
-			ArrayList<Object> Colonne7) {
-		
+	public static void Affichage2(ArrayList<Carte> Colonne1, ArrayList<Carte> Colonne2, ArrayList<Carte> Colonne3,
+			ArrayList<Carte> Colonne4, ArrayList<Carte> Colonne5, ArrayList<Carte> Colonne6,
+			ArrayList<Carte> Colonne7) {
+
 		int SizeMax = SizeMax(Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7);
-		
+
 		for (int i = 0; i != SizeMax; i++) // val max..
 		{
 			if (i < Colonne1.size()) {
@@ -182,9 +182,9 @@ public class Fonctions {
 		}
 	}
 
-	public static ArrayList<Object> Choix2Colonne(int choix2, ArrayList<Object> Colonne1, ArrayList<Object> Colonne2,
-			ArrayList<Object> Colonne3, ArrayList<Object> Colonne4, ArrayList<Object> Colonne5,
-			ArrayList<Object> Colonne6, ArrayList<Object> Colonne7) {
+	public static ArrayList<Carte> Choix2Colonne(int choix2, ArrayList<Carte> Colonne1, ArrayList<Carte> Colonne2,
+			ArrayList<Carte> Colonne3, ArrayList<Carte> Colonne4, ArrayList<Carte> Colonne5,
+			ArrayList<Carte> Colonne6, ArrayList<Carte> Colonne7) {
 		switch (choix2) {
 		case 1:
 			return Colonne1;
@@ -207,9 +207,10 @@ public class Fonctions {
 
 		}
 	}
-	public static ArrayList<Object> Choix1Colonne(int choix1, ArrayList<Object> Colonne0 ,ArrayList<Object> Colonne1, ArrayList<Object> Colonne2,
-			ArrayList<Object> Colonne3, ArrayList<Object> Colonne4, ArrayList<Object> Colonne5,
-			ArrayList<Object> Colonne6, ArrayList<Object> Colonne7) {
+
+	public static ArrayList<Carte> Choix1Colonne(int choix1, ArrayList<Carte> Colonne0, ArrayList<Carte> Colonne1,
+			ArrayList<Carte> Colonne2, ArrayList<Carte> Colonne3, ArrayList<Carte> Colonne4,
+			ArrayList<Carte> Colonne5, ArrayList<Carte> Colonne6, ArrayList<Carte> Colonne7) {
 		switch (choix1) {
 		case 2:
 			return Colonne1;
@@ -230,6 +231,21 @@ public class Fonctions {
 		default:
 			return null;
 
+		}
+	}
+
+	public static boolean ConditionNUM(Carte CarteBase, Carte CarteDessus)
+	{
+		if ((CarteBase.GetNumCarteInt()+1) != (CarteDessus.GetNumCarteInt()))
+			{
+			System.out.println("Carte Base : "+(CarteBase.GetNumCarteInt())+" Carte Dessus : "+(CarteDessus.GetNumCarteInt()));
+				System.out.println("Déplacement interdit !");
+				return false;
+			}
+		else 
+		{
+			System.out.println("Déplacement autorisé !");
+			return true;
 		}
 	}
 }

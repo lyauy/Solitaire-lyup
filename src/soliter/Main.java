@@ -7,7 +7,7 @@ public class Main {
 	public static void main(String[] args) {
 
 		boolean GG = false ;
-		ArrayList<Object> Paquet = new ArrayList<Object>();
+		ArrayList<Carte> Paquet = new ArrayList<Carte>();
 
 		for (int i = 1; i < 14; i++) {
 			Carte CarteGen = new Carte(i, "Pi");
