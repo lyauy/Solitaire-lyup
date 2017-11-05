@@ -9,7 +9,7 @@ public class Carte {
 		NumCarteInt = i;
 		NumeroCarte = Fonctions.NumTranslate(i);
 		Symbole = Psymbole;
-		FaceCarte = true;
+		FaceCarte = false;
 	}
 
 	public String GetNumCarte() {
