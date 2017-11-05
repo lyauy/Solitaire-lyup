@@ -1,13 +1,13 @@
 package soliter;
 
 public class Carte {
-	String Symbole;
-	String NumeroCarte;
-	boolean FaceCarte;
+	private String Symbole;
+	private String NumeroCarte;
+	private boolean FaceCarte;
 	public Carte(int i,String Psymbole) {
 		NumeroCarte = Fonctions.NumTranslate(i);
 		Symbole = Psymbole;
-		FaceCarte = false;
+		FaceCarte = true;
 	}
 
 	public String GetNumCarte() {

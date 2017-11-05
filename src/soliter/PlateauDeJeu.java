@@ -5,15 +5,15 @@ import java.util.Scanner;
 
 public class PlateauDeJeu {
 
-	ArrayList<Object> Colonne1 = new ArrayList<Object>();
-	ArrayList<Object> Colonne2 = new ArrayList<Object>();
-	ArrayList<Object> Colonne3 = new ArrayList<Object>();
-	ArrayList<Object> Colonne4 = new ArrayList<Object>();
-	ArrayList<Object> Colonne5 = new ArrayList<Object>();
-	ArrayList<Object> Colonne6 = new ArrayList<Object>();
-	ArrayList<Object> Colonne7 = new ArrayList<Object>();
+	private ArrayList<Object> Colonne1 = new ArrayList<Object>();
+	private ArrayList<Object> Colonne2 = new ArrayList<Object>();
+	private ArrayList<Object> Colonne3 = new ArrayList<Object>();
+	private ArrayList<Object> Colonne4 = new ArrayList<Object>();
+	private ArrayList<Object> Colonne5 = new ArrayList<Object>();
+	private ArrayList<Object> Colonne6 = new ArrayList<Object>();
+	private ArrayList<Object> Colonne7 = new ArrayList<Object>();
 
-	ArrayList<Object> Colonne0 = new ArrayList<Object>();
+	private ArrayList<Object> Colonne0 = new ArrayList<Object>();
 	private Scanner sc;
 
 	public PlateauDeJeu(ArrayList<Object> Paquet) {
@@ -26,14 +26,6 @@ public class PlateauDeJeu {
 		Fonctions.DistributionColonne(Paquet, Colonne7, 7, 21);
 
 		Fonctions.DistributionColonne(Paquet, Colonne0, 24, 28);
-		// System.out.println(Colonne1.toString());
-		// System.out.println(Colonne2.toString());
-		// System.out.println(Colonne3.toString());
-		// System.out.println(Colonne4.toString());
-		// System.out.println(Colonne5.toString());
-		// System.out.println(Colonne6.toString());
-		// System.out.println(Colonne7.toString());
-		// System.out.println(Colonne0.toString());
 		((Carte) Colonne1.get(0)).SetFaceCarteTrue();
 		((Carte) Colonne2.get(1)).SetFaceCarteTrue();
 		((Carte) Colonne3.get(2)).SetFaceCarteTrue();
@@ -52,6 +44,7 @@ public class PlateauDeJeu {
 				"\n-------------------------------------------------------------------------------------------------------------");
 	}
 
+	@SuppressWarnings("unchecked")
 	public void Menu() {
 		sc = new Scanner(System.in);
 		System.out.println(
@@ -70,16 +63,23 @@ public class PlateauDeJeu {
 			// Colonne3, Colonne4, Colonne5, Colonne6, Colonne7);
 			// Fonctions.Choix2Colonne(choix2, Colonne1, Colonne2, Colonne3,
 			// Colonne4, Colonne5, Colonne6, Colonne7);
-			
-			//Erreur out of bounds . . . .. .  .. . 
-			Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
-							.get(Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
-							.size());
-			Fonctions.Choix2Colonne(choix2, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
-							.remove(Fonctions
-							.Choix2Colonne(choix2, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
-							.size());
-
+			if (choix1 != 9) {
+				Fonctions.Choix2Colonne(choix2, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
+								.add(Fonctions
+								.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
+								.get(Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
+								.size() - 1));
+				
+				Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
+						.remove(Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
+					    .size() - 1);
+			}
+			else
+			{
+				Fonctions.Choix2Colonne(choix2, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
+				.add(Colonne0.get(0));
+				Colonne0.remove(0);
+			}			
 		} else {
 			Colonne0.add(Colonne0.get(0));
 			Colonne0.remove(0);

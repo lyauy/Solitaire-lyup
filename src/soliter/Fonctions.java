@@ -182,7 +182,7 @@ public class Fonctions {
 		}
 	}
 
-	public static ArrayList Choix2Colonne(int choix2, ArrayList<Object> Colonne1, ArrayList<Object> Colonne2,
+	public static ArrayList<Object> Choix2Colonne(int choix2, ArrayList<Object> Colonne1, ArrayList<Object> Colonne2,
 			ArrayList<Object> Colonne3, ArrayList<Object> Colonne4, ArrayList<Object> Colonne5,
 			ArrayList<Object> Colonne6, ArrayList<Object> Colonne7) {
 		switch (choix2) {
@@ -207,26 +207,24 @@ public class Fonctions {
 
 		}
 	}
-	public static ArrayList Choix1Colonne(int choix1, ArrayList<Object> Colonne0 ,ArrayList<Object> Colonne1, ArrayList<Object> Colonne2,
+	public static ArrayList<Object> Choix1Colonne(int choix1, ArrayList<Object> Colonne0 ,ArrayList<Object> Colonne1, ArrayList<Object> Colonne2,
 			ArrayList<Object> Colonne3, ArrayList<Object> Colonne4, ArrayList<Object> Colonne5,
 			ArrayList<Object> Colonne6, ArrayList<Object> Colonne7) {
 		switch (choix1) {
-		case 1:
-			return Colonne1;
 		case 2:
-			return Colonne2;
+			return Colonne1;
 		case 3:
-			return Colonne3;
+			return Colonne2;
 		case 4:
-			return Colonne4;
+			return Colonne3;
 		case 5:
-			return Colonne5;
+			return Colonne4;
 		case 6:
-			return Colonne6;
+			return Colonne5;
 		case 7:
-			return Colonne7;
+			return Colonne6;
 		case 8:
-			return null;
+			return Colonne7;
 		case 9:
 			return Colonne0;
 		default:
