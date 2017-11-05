@@ -30,6 +30,5 @@ public class Main {
 			A.Dessin();
 			A.Menu();
 		}
-		System.out.println("test");
 	}
 }
