@@ -32,7 +32,7 @@ public class Fonctions {
 		}
 	}
 
-	public static int CompteCartesFaceCachées(ArrayList<Carte> Colonne) { //On met les cartes faces cachées de chaque colonne (sauf les dernières cartes de chaque colonne)
+	public static int CompteCartesFaceCachées(ArrayList<Carte> Colonne) { //
 		int CCFC = 0;
 		for (int i = 0; i != Colonne.size(); i++) {
 			if (!((Carte) Colonne.get(i)).GetFaceCarte())
@@ -43,7 +43,7 @@ public class Fonctions {
 
 	public static int SizeMax(ArrayList<Carte> Colonne1, ArrayList<Carte> Colonne2, ArrayList<Carte> Colonne3,
 			ArrayList<Carte> Colonne4, ArrayList<Carte> Colonne5, ArrayList<Carte> Colonne6,
-			ArrayList<Carte> Colonne7) { //On affecte à SizeMax la valeur de la taille d'une colonne
+			ArrayList<Carte> Colonne7) { //On affecte à SizeMax la valeur de la taille d'une colonne, on en a besoin pour ne pas cacher la dernière carte d'une colonne
 
 		int SizeMax = Colonne1.size();
 		if (SizeMax < Colonne2.size())
@@ -193,14 +193,15 @@ public class Fonctions {
 	}
 
 
-	public static boolean ConditionCouleur(Carte CarteBase, Carte CarteDessus) {
+	public static boolean ConditionCouleur(Carte CarteBase, Carte CarteDessus) {// On compare la valeur de la carte choisie par choix1 (carte que l'utilisateur choisit) et la carte choisie par choix2 
+		//(colonne où l'utilisateur compte poser sa carte)
 		switch (CarteBase.GetSymboleCarte()) {
 		case "Pi":
 			switch (CarteDessus.GetSymboleCarte()) {
 			case "Pi":
-				return false;
+				return false;//on refuse le dépôt de la carte, car pi est de même couleur que pi
 			case "Ca":
-				return true;
+				return true;//on accepte le dépôt de la carte, car pi n'est pas de même couleur que ca
 			case "Tr":
 				return false;
 			case "Co":
@@ -247,7 +248,7 @@ public class Fonctions {
 	}
 	public static void SetDerniereCarteTrue(ArrayList<Carte> Colonne0, ArrayList<Carte> Colonne1, ArrayList<Carte> Colonne2, ArrayList<Carte> Colonne3,
 			ArrayList<Carte> Colonne4, ArrayList<Carte> Colonne5, ArrayList<Carte> Colonne6,
-			ArrayList<Carte> Colonne7)
+			ArrayList<Carte> Colonne7)//On affiche la dernière carte de chaque colonne
 	{
 		if (!Colonne0.isEmpty())
 			Colonne0.get(0).SetFaceCarteTrue();
