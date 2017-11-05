@@ -35,7 +35,7 @@ public class PlateauDeJeu {
 //		((Carte) Colonne7.get(6)).SetFaceCarteTrue();
 	}
 
-	public void Dessin() { //affichage du titre, ainsi que des colonnes de cartes
+	public void Dessin() {
 		Fonctions.SetDerniereCarteTrue(Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7);
 		System.out.println(
 				"\n------------------------------------------------- SOLITAIRE -------------------------------------------------");
@@ -52,26 +52,28 @@ public class PlateauDeJeu {
 				"Que voulez-vous selectionner ? \n1. Une nouvelle Carte \n2. La carte de la 1ère Colonne\n3. La carte de la 2ième Colonne"
 						+ "\n4. La carte de la 3ième Colonne\n5. La carte de la 4ième Colonne\n6. La carte de la 5ième Colonne"
 						+ "\n7. La carte de la 6ième Colonne\n8. La carte de la 7ième Colonne\n9. La carte du Deck");
-		int choix1 = sc.nextInt(); //saisie de la réponse
-			
+
+		int choix1 = sc.nextInt();
+
+		
+		
 		if (choix1 != 1) 
 		{
 			System.out.println("Vous avez la carte '"+Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7).get(Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
-					.size() - 1)+"' en main \n"); 
+					.size() - 1)+"' en main.");
 			System.out.println(
 					"Ou voulez-vous déplacer cette carte ?\n 1. Dans le 1er paquet\n 2. Dans le 2ième paquet\n 3. Dans le 3ième paquet"
 							+ "\n 4. Dans le 4ième paquet\n 5. Dans le 5ième paquet\n 6. Dans le 6ième paquet\n 7. Dans le 7ième paquet \n 8. Retour");
 			int choix2 = sc.nextInt();
-			
+
 			if(choix2 == 8)
 			{
 				return; //retour à la première étape "que voulez-vous séléctionner"
 			}
 						
+
 				if (choix1 != 9) 
 				{
-
-					
 					if (Fonctions.ConditionNUM(Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7).get(Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
 							.size() - 1),Fonctions.Choix2Colonne(choix2, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7).get(Fonctions.Choix2Colonne(choix2, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7).size() - 1) ))
 					{	Fonctions.Choix2Colonne(choix2, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
