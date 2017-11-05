@@ -3,6 +3,7 @@ package soliter;
 import java.util.ArrayList;
 
 public class Fonctions {
+
 	public static String NumTranslate(int NbrNum) { //Convertir les dernières cartes 11,12 et 13 en Valet (Va), Dame (Da) et Roi (Ro)
 		String NumCarte = "NULL";
 		switch (NbrNum) {
@@ -178,18 +179,19 @@ public class Fonctions {
 		if ((CarteBase.GetNumCarteInt()+1) != (CarteDessus.GetNumCarteInt()) || !ConditionCouleur(CarteBase, CarteDessus))
 			{
 			//Cas où la carte ne peut pas être déplacée dans la colonne choisie (cas où par exemple la valeur n'est pas un rang en dessous de la carte de la colonne choisie ET la couleur est la même que la carte de colonne choisie
-			System.out.println("Carte Base : "+(CarteBase.GetNumCarteInt())+" de "+(CarteBase.GetSymboleCarte())+" / Carte Dessus : "+(CarteDessus.GetNumCarteInt())+" de "+(CarteBase.GetSymboleCarte()));
+			System.out.println("Carte Base : "+(CarteBase.GetNumCarteInt())+" de "+(CarteBase.GetSymboleCarte())+" / Carte Dessus : "+(CarteDessus.GetNumCarteInt())+" de "+(CarteDessus.GetSymboleCarte()));
 				System.out.println("Déplacement interdit !");
 				return false;
 			}
 		else 
 		{	//Cas où la carte peut être déplacée dans la colonne choisie (cas où par exemple la valeur est un rang en dessous de la carte de la colonne choisie 
 			 //ET la couleur est différente de la carte de colonne choisie
-			System.out.println("Carte Base : "+(CarteBase.GetNumCarteInt())+" de "+(CarteBase.GetSymboleCarte())+" / Carte Dessus : "+(CarteDessus.GetNumCarteInt())+" de "+(CarteBase.GetSymboleCarte()));
+			System.out.println("Carte Base : "+(CarteBase.GetNumCarteInt())+" de "+(CarteBase.GetSymboleCarte())+" / Carte Dessus : "+(CarteDessus.GetNumCarteInt())+" de "+(CarteDessus.GetSymboleCarte()));
 			System.out.println("Déplacement autorisé !");
 			return true;
 		}
 	}
+
 
 	public static boolean ConditionCouleur(Carte CarteBase, Carte CarteDessus) {
 		switch (CarteBase.GetSymboleCarte()) {
