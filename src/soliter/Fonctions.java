@@ -65,7 +65,7 @@ public class Fonctions {
 
 		int SizeMax = SizeMax(Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7);
 
-		for (int i = 0; i != SizeMax; i++) // val max..
+		for (int i = 0; i != SizeMax; i++) // On met face cachée toutes les cartes d'une colonne sauf la dernière carte de la colonne
 		{
 			if (i < Colonne1.size()) {
 				if (((Carte) Colonne1.get(i)).GetFaceCarte() && !Colonne1.isEmpty())
@@ -124,7 +124,7 @@ public class Fonctions {
 	public static ArrayList<Carte> Choix2Colonne(int choix2, ArrayList<Carte> Colonne1, ArrayList<Carte> Colonne2,
 			ArrayList<Carte> Colonne3, ArrayList<Carte> Colonne4, ArrayList<Carte> Colonne5,
 			ArrayList<Carte> Colonne6, ArrayList<Carte> Colonne7) {
-		switch (choix2) {
+		switch (choix2) { //On retourne la colonne choisie par l'utilisateur (choix 2), ce choix est l'ajout d'une carte dans une colonne
 		case 1:
 			return Colonne1;
 		case 2:
@@ -150,7 +150,7 @@ public class Fonctions {
 	public static ArrayList<Carte> Choix1Colonne(int choix1, ArrayList<Carte> Colonne0, ArrayList<Carte> Colonne1,
 			ArrayList<Carte> Colonne2, ArrayList<Carte> Colonne3, ArrayList<Carte> Colonne4,
 			ArrayList<Carte> Colonne5, ArrayList<Carte> Colonne6, ArrayList<Carte> Colonne7) {
-		switch (choix1) { //On retourne la colonne choisie par l'utilisateur (choix 1)
+		switch (choix1) { //On retourne la colonne choisie par l'utilisateur (choix 1), ce choix est la récupération d'une carte d'une colonne
 		case 2:
 			return Colonne1;
 		case 3:
@@ -173,16 +173,18 @@ public class Fonctions {
 		}
 	}
 
-	public static boolean ConditionNUM(Carte CarteBase, Carte CarteDessus)
+	public static boolean ConditionNUM(Carte CarteBase, Carte CarteDessus) //On indique si l'ajout de la carte dans tel colonne est possible
 	{
 		if ((CarteBase.GetNumCarteInt()+1) != (CarteDessus.GetNumCarteInt()) || !ConditionCouleur(CarteBase, CarteDessus))
-			{
+			{//Cas où la carte ne peut pas être déplacée dans la colonne choisie (cas où par exemple la valeur n'est pas un rang en dessous de la carte de la colonne choisie 
+			 //ET la couleur est la même que la carte de colonne choisie
 			System.out.println("Carte Base : "+(CarteBase.GetNumCarteInt())+" de "+(CarteBase.GetSymboleCarte())+" / Carte Dessus : "+(CarteDessus.GetNumCarteInt())+" de "+(CarteBase.GetSymboleCarte()));
 				System.out.println("Déplacement interdit !");
 				return false;
 			}
 		else 
-		{
+		{	//Cas où la carte peut être déplacée dans la colonne choisie (cas où par exemple la valeur est un rang en dessous de la carte de la colonne choisie 
+			 //ET la couleur est différente de la carte de colonne choisie
 			System.out.println("Carte Base : "+(CarteBase.GetNumCarteInt())+" de "+(CarteBase.GetSymboleCarte())+" / Carte Dessus : "+(CarteDessus.GetNumCarteInt())+" de "+(CarteBase.GetSymboleCarte()));
 			System.out.println("Déplacement autorisé !");
 			return true;
