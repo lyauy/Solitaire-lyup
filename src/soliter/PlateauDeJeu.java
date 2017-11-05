@@ -45,7 +45,6 @@ public class PlateauDeJeu {
 				"\n-------------------------------------------------------------------------------------------------------------");
 	}
 
-	@SuppressWarnings("unchecked")
 	public void Menu() 
 	{
 		sc = new Scanner(System.in);
@@ -53,7 +52,7 @@ public class PlateauDeJeu {
 				"Que voulez-vous selectionner ? \n1. Une nouvelle Carte \n2. La carte de la 1ère Colonne\n3. La carte de la 2ième Colonne"
 						+ "\n4. La carte de la 3ième Colonne\n5. La carte de la 4ième Colonne\n6. La carte de la 5ième Colonne"
 						+ "\n7. La carte de la 6ième Colonne\n8. La carte de la 7ième Colonne\n9. La carte du Deck");
-		int choix1 = sc.nextInt();
+		int choix1 = sc.nextInt(); //saisie de la réponse
 			
 		if (choix1 != 1) 
 		{
@@ -66,7 +65,7 @@ public class PlateauDeJeu {
 			
 			if(choix2 == 8)
 			{
-				return;
+				return; //retour à la première étape "que voulez-vous séléctionner"
 			}
 						
 				if (choix1 != 9) 

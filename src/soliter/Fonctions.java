@@ -177,13 +177,13 @@ public class Fonctions {
 	{
 		if ((CarteBase.GetNumCarteInt()+1) != (CarteDessus.GetNumCarteInt()) || !ConditionCouleur(CarteBase, CarteDessus))
 			{
-				System.out.println("Carte Base : "+(CarteBase.GetNumCarteInt())+" Carte Dessus : "+(CarteDessus.GetNumCarteInt()));
+			System.out.println("Carte Base : "+(CarteBase.GetNumCarteInt())+" de "+(CarteBase.GetSymboleCarte())+" / Carte Dessus : "+(CarteDessus.GetNumCarteInt())+" de "+(CarteBase.GetSymboleCarte()));
 				System.out.println("Déplacement interdit !");
 				return false;
 			}
 		else 
 		{
-			System.out.println("Carte Base : "+(CarteBase.GetNumCarteInt())+" Carte Dessus : "+(CarteDessus.GetNumCarteInt()));
+			System.out.println("Carte Base : "+(CarteBase.GetNumCarteInt())+" de "+(CarteBase.GetSymboleCarte())+" / Carte Dessus : "+(CarteDessus.GetNumCarteInt())+" de "+(CarteBase.GetSymboleCarte()));
 			System.out.println("Déplacement autorisé !");
 			return true;
 		}
