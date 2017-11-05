@@ -3,7 +3,10 @@ package soliter;
 import java.util.ArrayList;
 
 public class Fonctions {
-	public static String NumTranslate(int NbrNum) { //Convertir les dernières cartes 11,12 et 13 en Valet (Va), Dame (Da) et Roi (Ro)
+	public static String NumTranslate(int NbrNum) { // Convertir les dernières
+													// cartes 11,12 et 13 en
+													// Valet (Va), Dame (Da) et
+													// Roi (Ro)
 		String NumCarte = "NULL";
 		switch (NbrNum) {
 		case 10:
@@ -25,13 +28,29 @@ public class Fonctions {
 	}
 
 	public static void DistributionColonne(ArrayList<Carte> Paquet, ArrayList<Carte> Colonne, int CarteDistrib,
-			int IStart) {
+			int IStart) { // On répartit les cartes dans chaque colonne (28
+							// cartes à répartir)
 		for (int i = IStart; i != (CarteDistrib + IStart); i++) {
 			Colonne.add(Paquet.get(i));
 		}
 	}
 
-	public static int CompteCartesFaceCachées(ArrayList<Carte> Colonne) { //On met les cartes faces cachées de chaque colonne (sauf les dernières cartes de chaque colonne)
+	public static int CompteCartesFaceCachées(ArrayList<Carte> Colonne) { // On
+																			// met
+																			// les
+																			// cartes
+																			// faces
+																			// cachées
+																			// de
+																			// chaque
+																			// colonne
+																			// (sauf
+																			// les
+																			// dernières
+																			// cartes
+																			// de
+																			// chaque
+																			// colonne)
 		int CCFC = 0;
 		for (int i = 0; i != Colonne.size(); i++) {
 			if (!((Carte) Colonne.get(i)).GetFaceCarte())
@@ -42,7 +61,8 @@ public class Fonctions {
 
 	public static int SizeMax(ArrayList<Carte> Colonne1, ArrayList<Carte> Colonne2, ArrayList<Carte> Colonne3,
 			ArrayList<Carte> Colonne4, ArrayList<Carte> Colonne5, ArrayList<Carte> Colonne6,
-			ArrayList<Carte> Colonne7) { //On affecte à SizeMax la valeur de la taille d'une colonne
+			ArrayList<Carte> Colonne7) { // On affecte à SizeMax la valeur de la
+											// taille d'une colonne
 
 		int SizeMax = Colonne1.size();
 		if (SizeMax < Colonne2.size())
@@ -59,14 +79,16 @@ public class Fonctions {
 			SizeMax = Colonne7.size();
 		return SizeMax;
 	}
+
 	public static void Affichage2(ArrayList<Carte> Colonne1, ArrayList<Carte> Colonne2, ArrayList<Carte> Colonne3,
 			ArrayList<Carte> Colonne4, ArrayList<Carte> Colonne5, ArrayList<Carte> Colonne6,
 			ArrayList<Carte> Colonne7) {
 
 		int SizeMax = SizeMax(Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7);
 
-		for (int i = 0; i != SizeMax; i++) // On met face cachée toutes les cartes d'une colonne sauf la dernière carte de la colonne
-		{
+		for (int i = 0; i != SizeMax; i++) { // On met face cachée toutes les
+												// cartes d'une colonne sauf la
+												// dernière carte de la colonne
 			if (i < Colonne1.size()) {
 				if (((Carte) Colonne1.get(i)).GetFaceCarte() && !Colonne1.isEmpty())
 					System.out.print(Colonne1.get(i) + "  ");
@@ -75,42 +97,42 @@ public class Fonctions {
 			} else
 				System.out.print("          ");
 			if (i < Colonne2.size()) {
-				if (((Carte) Colonne2.get(i)).GetFaceCarte()&& !Colonne2.isEmpty())
+				if (((Carte) Colonne2.get(i)).GetFaceCarte() && !Colonne2.isEmpty())
 					System.out.print(Colonne2.get(i) + "  ");
 				else
 					System.out.print("????????" + "  ");
 			} else
 				System.out.print("          ");
 			if (i < Colonne3.size()) {
-				if (((Carte) Colonne3.get(i)).GetFaceCarte()&& !Colonne3.isEmpty())
+				if (((Carte) Colonne3.get(i)).GetFaceCarte() && !Colonne3.isEmpty())
 					System.out.print(Colonne3.get(i) + "  ");
 				else
 					System.out.print("????????" + "  ");
 			} else
 				System.out.print("          ");
 			if (i < Colonne4.size()) {
-				if (((Carte) Colonne4.get(i)).GetFaceCarte()&& !Colonne4.isEmpty())
+				if (((Carte) Colonne4.get(i)).GetFaceCarte() && !Colonne4.isEmpty())
 					System.out.print(Colonne4.get(i) + "  ");
 				else
 					System.out.print("????????" + "  ");
 			} else
 				System.out.print("          ");
 			if (i < Colonne5.size()) {
-				if (((Carte) Colonne5.get(i)).GetFaceCarte()&& !Colonne5.isEmpty())
+				if (((Carte) Colonne5.get(i)).GetFaceCarte() && !Colonne5.isEmpty())
 					System.out.print(Colonne5.get(i) + "  ");
 				else
 					System.out.print("????????" + "  ");
 			} else
 				System.out.print("          ");
 			if (i < Colonne6.size()) {
-				if (((Carte) Colonne6.get(i)).GetFaceCarte()&& !Colonne6.isEmpty())
+				if (((Carte) Colonne6.get(i)).GetFaceCarte() && !Colonne6.isEmpty())
 					System.out.print(Colonne6.get(i) + "  ");
 				else
 					System.out.print("????????" + "  ");
 			} else
 				System.out.print("          ");
 			if (i < Colonne7.size()) {
-				if (((Carte) Colonne7.get(i)).GetFaceCarte()&& !Colonne7.isEmpty())
+				if (((Carte) Colonne7.get(i)).GetFaceCarte() && !Colonne7.isEmpty())
 					System.out.print(Colonne7.get(i) + "  ");
 				else
 					System.out.print("????????" + "  ");
@@ -122,9 +144,13 @@ public class Fonctions {
 	}
 
 	public static ArrayList<Carte> Choix2Colonne(int choix2, ArrayList<Carte> Colonne1, ArrayList<Carte> Colonne2,
-			ArrayList<Carte> Colonne3, ArrayList<Carte> Colonne4, ArrayList<Carte> Colonne5,
-			ArrayList<Carte> Colonne6, ArrayList<Carte> Colonne7) {
-		switch (choix2) { //On retourne la colonne choisie par l'utilisateur (choix 2), ce choix est l'ajout d'une carte dans une colonne
+			ArrayList<Carte> Colonne3, ArrayList<Carte> Colonne4, ArrayList<Carte> Colonne5, ArrayList<Carte> Colonne6,
+			ArrayList<Carte> Colonne7) {
+		switch (choix2) {
+
+		// On retourne la colonne choisie par l'utilisateur (choix 2), ce choix
+		// est l'ajout d'une carte dans une colonne
+
 		case 1:
 			return Colonne1;
 		case 2:
@@ -148,9 +174,13 @@ public class Fonctions {
 	}
 
 	public static ArrayList<Carte> Choix1Colonne(int choix1, ArrayList<Carte> Colonne0, ArrayList<Carte> Colonne1,
-			ArrayList<Carte> Colonne2, ArrayList<Carte> Colonne3, ArrayList<Carte> Colonne4,
-			ArrayList<Carte> Colonne5, ArrayList<Carte> Colonne6, ArrayList<Carte> Colonne7) {
-		switch (choix1) { //On retourne la colonne choisie par l'utilisateur (choix 1), ce choix est la récupération d'une carte d'une colonne
+			ArrayList<Carte> Colonne2, ArrayList<Carte> Colonne3, ArrayList<Carte> Colonne4, ArrayList<Carte> Colonne5,
+			ArrayList<Carte> Colonne6, ArrayList<Carte> Colonne7) {
+		switch (choix1) {
+
+		// On retourne la colonne choisie par l'utilisateur (choix 1), ce choix
+		// est la récupération d'une carte d'une colonne
+
 		case 2:
 			return Colonne1;
 		case 3:
@@ -173,19 +203,36 @@ public class Fonctions {
 		}
 	}
 
-	public static boolean ConditionNUM(Carte CarteBase, Carte CarteDessus) //On indique si l'ajout de la carte dans tel colonne est possible
+	public static boolean ConditionNUM(Carte CarteBase, Carte CarteDessus) // On
+																			// indique
+																			// si
+																			// l'ajout
+																			// de
+																			// la
+																			// carte
+																			// dans
+																			// tel
+																			// colonne
+																			// est
+																			// possible
 	{
-		if ((CarteBase.GetNumCarteInt()+1) != (CarteDessus.GetNumCarteInt()) || !ConditionCouleur(CarteBase, CarteDessus))
-			{//Cas où la carte ne peut pas être déplacée dans la colonne choisie (cas où par exemple la valeur n'est pas un rang en dessous de la carte de la colonne choisie 
-			 //ET la couleur est la même que la carte de colonne choisie
-			System.out.println("Carte Base : "+(CarteBase.GetNumCarteInt())+" de "+(CarteBase.GetSymboleCarte())+" / Carte Dessus : "+(CarteDessus.GetNumCarteInt())+" de "+(CarteBase.GetSymboleCarte()));
-				System.out.println("Déplacement interdit !");
-				return false;
-			}
-		else 
-		{	//Cas où la carte peut être déplacée dans la colonne choisie (cas où par exemple la valeur est un rang en dessous de la carte de la colonne choisie 
-			 //ET la couleur est différente de la carte de colonne choisie
-			System.out.println("Carte Base : "+(CarteBase.GetNumCarteInt())+" de "+(CarteBase.GetSymboleCarte())+" / Carte Dessus : "+(CarteDessus.GetNumCarteInt())+" de "+(CarteBase.GetSymboleCarte()));
+		if ((CarteBase.GetNumCarteInt() + 1) != (CarteDessus.GetNumCarteInt())
+				|| !ConditionCouleur(CarteBase, CarteDessus)) {
+			// Cas où la carte ne peut pas être déplacée dans la colonne choisie
+			// (cas où par exemple la valeur n'est pas un rang en dessous de la
+			// carte de la colonne choisie ET la couleur est la même que la
+			// carte de colonne choisie
+			System.out.println("Carte Base : " + (CarteBase.GetNumCarteInt()) + " de " + (CarteBase.GetSymboleCarte())
+					+ " / Carte Dessus : " + (CarteDessus.GetNumCarteInt()) + " de " + (CarteBase.GetSymboleCarte()));
+			System.out.println("Déplacement interdit !");
+			return false;
+		} else {
+			// Cas où la carte peut être déplacée dans la colonne choisie (cas
+			// où par exemple la valeur est un rang en dessous de la carte de la
+			// colonne choisie ET la couleur est différente de la carte de
+			// colonne choisie
+			System.out.println("Carte Base : " + (CarteBase.GetNumCarteInt()) + " de " + (CarteBase.GetSymboleCarte())
+					+ " / Carte Dessus : " + (CarteDessus.GetNumCarteInt()) + " de " + (CarteBase.GetSymboleCarte()));
 			System.out.println("Déplacement autorisé !");
 			return true;
 		}
@@ -243,10 +290,10 @@ public class Fonctions {
 			return true;
 		}
 	}
-	public static void SetDerniereCarteTrue(ArrayList<Carte> Colonne0, ArrayList<Carte> Colonne1, ArrayList<Carte> Colonne2, ArrayList<Carte> Colonne3,
-			ArrayList<Carte> Colonne4, ArrayList<Carte> Colonne5, ArrayList<Carte> Colonne6,
-			ArrayList<Carte> Colonne7)
-	{
+
+	public static void SetDerniereCarteTrue(ArrayList<Carte> Colonne0, ArrayList<Carte> Colonne1,
+			ArrayList<Carte> Colonne2, ArrayList<Carte> Colonne3, ArrayList<Carte> Colonne4, ArrayList<Carte> Colonne5,
+			ArrayList<Carte> Colonne6, ArrayList<Carte> Colonne7) {
 		if (!Colonne0.isEmpty())
 			Colonne0.get(0).SetFaceCarteTrue();
 		if (!Colonne1.isEmpty())

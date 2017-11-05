@@ -35,7 +35,7 @@ public class PlateauDeJeu {
 //		((Carte) Colonne7.get(6)).SetFaceCarteTrue();
 	}
 
-	public void Dessin() {
+	public void Dessin() { //affichage du titre, ainsi que des colonnes de cartes
 		Fonctions.SetDerniereCarteTrue(Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7);
 		System.out.println(
 				"\n------------------------------------------------- SOLITAIRE -------------------------------------------------");
