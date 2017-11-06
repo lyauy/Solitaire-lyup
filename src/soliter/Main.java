@@ -8,7 +8,7 @@ public class Main {
 
 		boolean GG = false ;
 		ArrayList<Carte> Paquet = new ArrayList<Carte>();
-
+//methode carte
 		for (int i = 1; i < 14; i++) {//On affecte aux cartes leurs symboles
 			Carte CarteGen = new Carte(i, "Pi");
 			Paquet.add(CarteGen);

@@ -59,6 +59,10 @@ public class PlateauDeJeu {
 		
 		if (choix1 != 1) 
 		{
+			int i=1;
+			int compte = Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7).get(Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
+					.size() - get(Fonctions.CompteCaché(choix1,Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7));
+			System.out.println(compte);
 			System.out.println("Vous avez la carte '"+Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7).get(Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
 					.size() - 1)+"' en main.");
 			System.out.println(
@@ -76,16 +80,18 @@ public class PlateauDeJeu {
 				{
 					if (Fonctions.ConditionNUM(Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7).get(Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
 							.size() - 1),Fonctions.Choix2Colonne(choix2, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7).get(Fonctions.Choix2Colonne(choix2, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7).size() - 1) ))
-					{	Fonctions.Choix2Colonne(choix2, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
+					{	
+					for (i=1;i <= compte; i++)
+						Fonctions.Choix2Colonne(choix2, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
 										.add(Fonctions
 										.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
 										.get(Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
-										.size() - 1));
+										.size() - i));
 						
 						Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
 								.remove(Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
-							    .size() - 1);
-					}
+							    .size() - i);
+				}
 				}
 				else
 				{
@@ -103,5 +109,10 @@ public class PlateauDeJeu {
 					Colonne0.add(Colonne0.get(0));
 					Colonne0.remove(0);
 			}
+	}
+
+	private int get(int compteCaché) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }

@@ -3,7 +3,7 @@ package soliter;
 import java.util.ArrayList;
 
 public class Fonctions {
-
+// à mettre dans carte
 	public static String NumTranslate(int NbrNum) { //Convertir les dernières cartes 11,12 et 13 en Valet (Va), Dame (Da) et Roi (Ro)
 		String NumCarte = "NULL";
 		switch (NbrNum) {
@@ -65,7 +65,6 @@ public class Fonctions {
 			ArrayList<Carte> Colonne7) {
 
 		int SizeMax = SizeMax(Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7);
-
 		for (int i = 0; i != SizeMax; i++) // On met face cachée toutes les cartes d'une colonne sauf la dernière carte de la colonne
 		{
 			if (i < Colonne1.size()) {
@@ -73,6 +72,7 @@ public class Fonctions {
 					System.out.print(Colonne1.get(i) + "  ");
 				else
 					System.out.print("????????" + "  ");
+					
 			} else
 				System.out.print("          ");
 			if (i < Colonne2.size()) {
@@ -80,6 +80,7 @@ public class Fonctions {
 					System.out.print(Colonne2.get(i) + "  ");
 				else
 					System.out.print("????????" + "  ");
+					
 			} else
 				System.out.print("          ");
 			if (i < Colonne3.size()) {
@@ -87,6 +88,7 @@ public class Fonctions {
 					System.out.print(Colonne3.get(i) + "  ");
 				else
 					System.out.print("????????" + "  ");
+					
 			} else
 				System.out.print("          ");
 			if (i < Colonne4.size()) {
@@ -94,6 +96,7 @@ public class Fonctions {
 					System.out.print(Colonne4.get(i) + "  ");
 				else
 					System.out.print("????????" + "  ");
+					
 			} else
 				System.out.print("          ");
 			if (i < Colonne5.size()) {
@@ -101,6 +104,7 @@ public class Fonctions {
 					System.out.print(Colonne5.get(i) + "  ");
 				else
 					System.out.print("????????" + "  ");
+					
 			} else
 				System.out.print("          ");
 			if (i < Colonne6.size()) {
@@ -108,6 +112,7 @@ public class Fonctions {
 					System.out.print(Colonne6.get(i) + "  ");
 				else
 					System.out.print("????????" + "  ");
+					
 			} else
 				System.out.print("          ");
 			if (i < Colonne7.size()) {
@@ -115,6 +120,7 @@ public class Fonctions {
 					System.out.print(Colonne7.get(i) + "  ");
 				else
 					System.out.print("????????" + "  ");
+					
 			} else
 				System.out.print("          ");
 			System.out.println("");
@@ -267,4 +273,93 @@ public class Fonctions {
 		if (!Colonne7.isEmpty())
 			Colonne7.get((Colonne7.size() - 1)).SetFaceCarteTrue();
 	}
-}
+	
+	public static int CompteCaché(int choix1, ArrayList<Carte> Colonne1, ArrayList<Carte> Colonne2, ArrayList<Carte> Colonne3,
+			ArrayList<Carte> Colonne4, ArrayList<Carte> Colonne5, ArrayList<Carte> Colonne6,
+			ArrayList<Carte> Colonne7) {
+
+		int SizeMax = SizeMax(Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7);
+		int comptecaché = 0;
+		switch (choix1)
+		{
+			case 2:
+				for (int i = 0; i != SizeMax; i++) // On met face cachée toutes les cartes d'une colonne sauf la dernière carte de la colonne
+				{
+					if (i < Colonne1.size()) 
+						if (((Carte) Colonne1.get(i)).GetFaceCarte() && !Colonne1.isEmpty())
+							System.out.print("  ");
+						else
+							comptecaché++;
+				}
+
+
+			case 3:
+				for (int i = 0; i != SizeMax; i++) // On met face cachée toutes les cartes d'une colonne sauf la dernière carte de la colonne
+				{
+					if (i < Colonne2.size()) 
+						if (((Carte) Colonne2.get(i)).GetFaceCarte() && !Colonne2.isEmpty())
+							System.out.print("  ");
+						else
+							comptecaché++;
+					}
+
+
+			case 4:
+				for (int i = 0; i != SizeMax; i++) // On met face cachée toutes les cartes d'une colonne sauf la dernière carte de la colonne
+				{
+					if (i < Colonne3.size()) 
+						if (((Carte) Colonne3.get(i)).GetFaceCarte() && !Colonne3.isEmpty())
+							System.out.print("  ");
+						else
+							comptecaché++;
+					}
+
+
+			case 5:
+				for (int i = 0; i != SizeMax; i++) // On met face cachée toutes les cartes d'une colonne sauf la dernière carte de la colonne
+				{
+					if (i < Colonne4.size()) 
+						if (((Carte) Colonne4.get(i)).GetFaceCarte() && !Colonne4.isEmpty())
+							System.out.print("  ");
+						else
+							comptecaché++;
+					}
+
+
+			case 6:
+				for (int i = 0; i != SizeMax; i++) // On met face cachée toutes les cartes d'une colonne sauf la dernière carte de la colonne
+				{
+					if (i < Colonne1.size()) 
+						if (((Carte) Colonne5.get(i)).GetFaceCarte() && !Colonne5.isEmpty())
+							System.out.print("  ");
+						else
+							comptecaché++;
+					}
+
+
+			case 7:
+				for (int i = 0; i != SizeMax; i++) // On met face cachée toutes les cartes d'une colonne sauf la dernière carte de la colonne
+				{
+					if (i < Colonne1.size()) 
+						if (((Carte) Colonne6.get(i)).GetFaceCarte() && !Colonne6.isEmpty())
+							System.out.print("  ");
+						else
+							comptecaché++;
+					}
+
+
+			case 8:
+				for (int i = 0; i != SizeMax; i++) // On met face cachée toutes les cartes d'une colonne sauf la dernière carte de la colonne
+				{
+					if (i < Colonne1.size()) 
+						if (((Carte) Colonne7.get(i)).GetFaceCarte() && !Colonne7.isEmpty())
+							System.out.print("  ");
+						else
+							comptecaché++;
+					}
+			}
+		return comptecaché;
+	}
+}	
+	
+
