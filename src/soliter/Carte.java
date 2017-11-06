@@ -6,33 +6,60 @@ public class Carte { //Paramètres de la carte : symbole, numéro et face carte (c
 	private String NumeroCarte;
 	private boolean FaceCarte;
 	private int NumCarteInt;
+	
 	public Carte(int i,String Psymbole) { //Constructeur de la classe carte
-
 		NumCarteInt = i;
-		NumeroCarte = Fonctions.NumTranslate(i);
+		NumeroCarte = NumTranslate(i);
 		Symbole = Psymbole;
 		FaceCarte = false;
 	}
 
-	public String GetNumCarte() {
+	public String getNumCarte() {
 		return NumeroCarte;
 	}
-	public int GetNumCarteInt()
+	public int getNumCarteInt()
 	{
 		return NumCarteInt;
 	}
-	public String GetSymboleCarte() {
+	public String getSymboleCarte() {
 		return Symbole;
 	}
-	public boolean GetFaceCarte()
+	public boolean getFaceCarte()
 	{
 		return FaceCarte;
 	}
-	public void SetFaceCarteTrue()
+	public void setFaceCarteTrue()
 	{
 		this.FaceCarte = true;
 	}
 	public String toString() { 
-	    return GetNumCarte()+" de "+GetSymboleCarte();
+	    return getNumCarte()+" de "+getSymboleCarte();
 	} 
+	public String getCouleur()
+	{
+		if (this.getSymboleCarte() == "Pi" || this.getSymboleCarte() == "Tr")
+			return "Noir";
+		else
+			return "Rouge";
+	}
+	public String NumTranslate(int NbrNum) { //Convertir les dernières cartes 11,12 et 13 en Valet (Va), Dame (Da) et Roi (Ro)
+		String NumCarte = "NULL";
+		switch (NbrNum) {
+		case 10:
+			NumCarte = "" + 10;
+			break;
+		case 11:
+			NumCarte = "Va";
+			break;
+		case 12:
+			NumCarte = "Da";
+			break;
+		case 13:
+			NumCarte = "Ro";
+			break;
+		default:
+			NumCarte = "0" + NbrNum;
+		}
+		return (NumCarte);
+	}
 }

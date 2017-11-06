@@ -1,9 +1,13 @@
 package soliter;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Scanner;
 
 public class PlateauDeJeu {
+	
+	private ArrayList<Carte> Paquet = new ArrayList<Carte>();
+	
 	//on initialise les 7 colonnes du jeu
 	private ArrayList<Carte> Colonne1 = new ArrayList<Carte>();
 	private ArrayList<Carte> Colonne2 = new ArrayList<Carte>();
@@ -16,51 +20,153 @@ public class PlateauDeJeu {
 	private ArrayList<Carte> Colonne0 = new ArrayList<Carte>();
 	private Scanner sc;
 
-	public PlateauDeJeu(ArrayList<Carte> Paquet) {//On distribue dans chaque colonne un nombre de cartes (1,2,3,4,5,6,7)
-		Fonctions.DistributionColonne(Paquet, Colonne1, 1, 0);
-		Fonctions.DistributionColonne(Paquet, Colonne2, 2, 1);
-		Fonctions.DistributionColonne(Paquet, Colonne3, 3, 3);
-		Fonctions.DistributionColonne(Paquet, Colonne4, 4, 6);
-		Fonctions.DistributionColonne(Paquet, Colonne5, 5, 10);
-		Fonctions.DistributionColonne(Paquet, Colonne6, 6, 15);
-		Fonctions.DistributionColonne(Paquet, Colonne7, 7, 21);
-
-		Fonctions.DistributionColonne(Paquet, Colonne0, 24, 28);
-//		((Carte) Colonne1.get(0)).SetFaceCarteTrue();
-//		((Carte) Colonne2.get(1)).SetFaceCarteTrue();
-//		((Carte) Colonne3.get(2)).SetFaceCarteTrue();
-//		((Carte) Colonne4.get(3)).SetFaceCarteTrue();
-//		((Carte) Colonne5.get(4)).SetFaceCarteTrue();
-//		((Carte) Colonne6.get(5)).SetFaceCarteTrue();
-//		((Carte) Colonne7.get(6)).SetFaceCarteTrue();
+	public PlateauDeJeu() {//On distribue dans chaque colonne un nombre de cartes (1,2,3,4,5,6,7)
+		DistributionPaquet();
+		Collections.shuffle(Paquet); //On mélange le paquet de cartes
+		System.out.println(Paquet.toString());
+		DistributionPversColonne();
 	}
+	public void DistributionPaquet()
+	{
+		for (int i = 1; i < 14; i++) { //On affecte aux cartes leurs symboles
+			Carte CarteGen = new Carte(i, "Pi");
+			Paquet.add(CarteGen);
+			Carte CarteGen1 = new Carte(i, "Ca");
+			Paquet.add(CarteGen1);
+			Carte CarteGen2 = new Carte(i, "Tr");
+			Paquet.add(CarteGen2);
+			Carte CarteGen3 = new Carte(i, "Co");
+			Paquet.add(CarteGen3);
+		}
+	}
+	public void DistributionPversColonne()
+	{
+		DistributionColonne(Paquet, Colonne1, 1, 0);
+		DistributionColonne(Paquet, Colonne2, 2, 1);
+		DistributionColonne(Paquet, Colonne3, 3, 3);
+		DistributionColonne(Paquet, Colonne4, 4, 6);
+		DistributionColonne(Paquet, Colonne5, 5, 10);
+		DistributionColonne(Paquet, Colonne6, 6, 15);
+		DistributionColonne(Paquet, Colonne7, 7, 21);
 
+		DistributionColonne(Paquet, Colonne0, 24, 28);
+	}
+	public static void DistributionColonne(ArrayList<Carte> Paquet, ArrayList<Carte> Colonne, int CarteDistrib,
+			int IStart) { //On répartit les cartes dans chaque colonne (28 cartes à répartir)
+		for (int i = IStart; i != (CarteDistrib + IStart); i++) {
+			Colonne.add(Paquet.get(i));
+		}
+	}
+	public void Affichage() {
+
+		int SizeMax = Fonctions.SizeMax(Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7);
+
+		for (int i = 0; i != SizeMax; i++) // On met face cachée toutes les cartes d'une colonne sauf la dernière carte de la colonne
+		{
+			if (i < Colonne1.size()) {
+				if (((Carte) Colonne1.get(i)).getFaceCarte() && !Colonne1.isEmpty())
+					System.out.print(Colonne1.get(i) + "  ");
+				else
+					System.out.print("????????" + "  ");
+			} else
+				System.out.print("          ");
+			if (i < Colonne2.size()) {
+				if (((Carte) Colonne2.get(i)).getFaceCarte()&& !Colonne2.isEmpty())
+					System.out.print(Colonne2.get(i) + "  ");
+				else
+					System.out.print("????????" + "  ");
+			} else
+				System.out.print("          ");
+			if (i < Colonne3.size()) {
+				if (((Carte) Colonne3.get(i)).getFaceCarte()&& !Colonne3.isEmpty())
+					System.out.print(Colonne3.get(i) + "  ");
+				else
+					System.out.print("????????" + "  ");
+			} else
+				System.out.print("          ");
+			if (i < Colonne4.size()) {
+				if (((Carte) Colonne4.get(i)).getFaceCarte()&& !Colonne4.isEmpty())
+					System.out.print(Colonne4.get(i) + "  ");
+				else
+					System.out.print("????????" + "  ");
+			} else
+				System.out.print("          ");
+			if (i < Colonne5.size()) {
+				if (((Carte) Colonne5.get(i)).getFaceCarte()&& !Colonne5.isEmpty())
+					System.out.print(Colonne5.get(i) + "  ");
+				else
+					System.out.print("????????" + "  ");
+			} else
+				System.out.print("          ");
+			if (i < Colonne6.size()) {
+				if (((Carte) Colonne6.get(i)).getFaceCarte()&& !Colonne6.isEmpty())
+					System.out.print(Colonne6.get(i) + "  ");
+				else
+					System.out.print("????????" + "  ");
+			} else
+				System.out.print("          ");
+			if (i < Colonne7.size()) {
+				if (((Carte) Colonne7.get(i)).getFaceCarte()&& !Colonne7.isEmpty())
+					System.out.print(Colonne7.get(i) + "  ");
+				else
+					System.out.print("????????" + "  ");
+			} else
+				System.out.print("          ");
+			System.out.println("");
+
+		}
+	}
+	public ArrayList<Carte> Choix2Colonne(int choix2) {
+		switch (choix2) { //On retourne la colonne choisie par l'utilisateur (choix 2), ce choix est l'ajout d'une carte dans une colonne
+		case 1:
+			return Colonne1;
+		case 2:
+			return Colonne2;
+		case 3:
+			return Colonne3;
+		case 4:
+			return Colonne4;
+		case 5:
+			return Colonne5;
+		case 6:
+			return Colonne6;
+		case 7:
+			return Colonne7;
+		case 8:
+			return Colonne0;
+		default:
+			return null;
+
+		}
+	}
 	public void Dessin() {//"Interface" du jeu avec le titre et les piles de carte
-		Fonctions.SetDerniereCarteTrue(Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7);
+		Fonctions.setDerniereCarteTrue(Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7);
 		System.out.println(
 				"\n------------------------------------------------- SOLITAIRE -------------------------------------------------");
 		System.out.println("[" + Colonne0.get(0) + "]\t\t\t\t\t [] [] [] [] \n\n");
-		Fonctions.Affichage2(Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7);
+		Affichage();
 		System.out.println(
 				"\n-------------------------------------------------------------------------------------------------------------");
 	}
-
 	public void Menu() 
 	{
 		sc = new Scanner(System.in);
 		System.out.println(
-				"Que voulez-vous selectionner ? \n1. Une nouvelle Carte \n2. La carte de la 1ère Colonne\n3. La carte de la 2ième Colonne"
-						+ "\n4. La carte de la 3ième Colonne\n5. La carte de la 4ième Colonne\n6. La carte de la 5ième Colonne"
-						+ "\n7. La carte de la 6ième Colonne\n8. La carte de la 7ième Colonne\n9. La carte du Deck");
+				"Que voulez-vous selectionner ? \n0. Une nouvelle Carte \n1. La carte de la 1ère Colonne\n2. La carte de la 2ième Colonne"
+						+ "\n3. La carte de la 3ième Colonne\n4. La carte de la 4ième Colonne\n5. La carte de la 5ième Colonne"
+						+ "\n6. La carte de la 6ième Colonne\n7. La carte de la 7ième Colonne\n8. La carte du Deck");
 
 		int choix1 = sc.nextInt();//on demande à l'utilisateur de piocher une nouvelle carte, ou bien de récupérer une carte des 7 colonnes ou du deck
 
 		
 		
-		if (choix1 != 1) 
+		if (choix1 != 0) 
 		{
-			System.out.println("Vous avez la carte '"+Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7).get(Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
+			System.out.println("Vous avez la carte '"+Choix2Colonne(choix1).get(Choix2Colonne(choix1)
 					.size() - 1)+"' en main.");
+			/**
+			 * PROBLEME AK LE DECK . . . .. . .. . . . . . . . . . .  .. . . . . .. . .. . .  . . . .. . ......................... . . . ..  . .
+			 */
 			System.out.println(
 					"Ou voulez-vous déplacer cette carte ?\n 1. Dans le 1er paquet\n 2. Dans le 2ième paquet\n 3. Dans le 3ième paquet"
 							+ "\n 4. Dans le 4ième paquet\n 5. Dans le 5ième paquet\n 6. Dans le 6ième paquet\n 7. Dans le 7ième paquet \n 8. Retour");
@@ -72,27 +178,20 @@ public class PlateauDeJeu {
 			}
 						
 
-				if (choix1 != 9) 
+				if (choix1 != 8) 
 				{
-					if (Fonctions.ConditionNUM(Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7).get(Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
-							.size() - 1),Fonctions.Choix2Colonne(choix2, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7).get(Fonctions.Choix2Colonne(choix2, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7).size() - 1) ))
-					{	Fonctions.Choix2Colonne(choix2, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
-										.add(Fonctions
-										.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
-										.get(Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
-										.size() - 1));
+					if (Fonctions.ConditionNUM(Choix2Colonne(choix1).get(Choix2Colonne(choix1)
+							.size() - 1),Choix2Colonne(choix2).get(Choix2Colonne(choix2).size() - 1) ))
+					{	Choix2Colonne(choix2).add(Choix2Colonne(choix1).get(Choix2Colonne(choix1).size() - 1));
 						
-						Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
-								.remove(Fonctions.Choix1Colonne(choix1, Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
-							    .size() - 1);
+						Choix2Colonne(choix1).remove(Choix2Colonne(choix1).size() - 1);
 					}
 				}
 				else
 				{
-					if( Fonctions.ConditionNUM(Colonne0.get(0), Fonctions.Choix2Colonne(choix2, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7).get(Fonctions.Choix2Colonne(choix2, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7).size() - 1) ))
+					if( Fonctions.ConditionNUM(Colonne0.get(0), Choix2Colonne(choix2).get(Choix2Colonne(choix2).size() - 1) ))
 					{
-						Fonctions.Choix2Colonne(choix2, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7)
-						.add(Colonne0.get(0));
+						Choix2Colonne(choix2).add(Colonne0.get(0));
 						Colonne0.remove(0);
 					}
 				}
