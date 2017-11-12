@@ -17,24 +17,30 @@ public class Carte { //Paramètres de la carte : symbole, numéro et face carte 
 	public String getNumCarte() {
 		return NumeroCarte;
 	}
+	
 	public int getNumCarteInt()
 	{
 		return NumCarteInt;
 	}
+	
 	public String getSymboleCarte() {
 		return Symbole;
 	}
+	
 	public boolean getFaceCarte()
 	{
 		return FaceCarte;
 	}
+	
 	public void setFaceCarteTrue()
 	{
 		this.FaceCarte = true;
 	}
+	
 	public String toString() { 
 	    return "["+getNumCarte()+" de "+getSymboleCarte()+"]";
 	} 
+	
 	public String getCouleur()
 	{
 		if (this.getSymboleCarte() == "♠" || this.getSymboleCarte() == "♣")
@@ -42,6 +48,7 @@ public class Carte { //Paramètres de la carte : symbole, numéro et face carte 
 		else
 			return "Rouge";
 	}
+	
 	public String NumTranslate(int NbrNum) { //Convertir les dernières cartes 11,12 et 13 en Valet (Va), Dame (Da) et Roi (Ro)
 		String NumCarte = "NULL";
 		switch (NbrNum) {
