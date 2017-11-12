@@ -17,6 +17,12 @@ public class PlateauDeJeu {
 	private ArrayList<Carte> Colonne6 = new ArrayList<Carte>();
 	private ArrayList<Carte> Colonne7 = new ArrayList<Carte>();
 
+	ArrayList<ArrayList<Carte>> ArraydArray4 = new ArrayList<ArrayList<Carte>>();
+	Carte Carte0 = new Carte(0, "♠");
+	Carte Carte1 = new Carte(0, "♦");
+	Carte Carte2 = new Carte(0, "♣");
+	Carte Carte3 = new Carte(0, "♥");
+	
 	private ArrayList<Carte> Colonne0 = new ArrayList<Carte>();
 	private Scanner sc;
 
@@ -25,7 +31,25 @@ public class PlateauDeJeu {
 		Collections.shuffle(Paquet); //On mélange le paquet de cartes
 		System.out.println(Paquet.toString());
 		DistributionPversColonne();
+		Creation4Array();
 	}
+	
+	public void Creation4Array()
+	{
+		ArrayList<Carte> Case1 = new ArrayList<Carte>();
+		ArrayList<Carte> Case2 = new ArrayList<Carte>();
+		ArrayList<Carte> Case3 = new ArrayList<Carte>();
+		ArrayList<Carte> Case4 = new ArrayList<Carte>();
+		ArraydArray4.add(Case1);	
+		ArraydArray4.add(Case2);
+		ArraydArray4.add(Case3);
+		ArraydArray4.add(Case4);	
+		ArraydArray4.get(0).add(Carte0);
+		ArraydArray4.get(1).add(Carte1);
+		ArraydArray4.get(2).add(Carte2);
+		ArraydArray4.get(3).add(Carte3);		
+	}
+	
 	public void DistributionPaquet()
 	{
 		for (int i = 1; i < 14; i++) { //On affecte aux cartes leurs symboles
@@ -39,6 +63,7 @@ public class PlateauDeJeu {
 			Paquet.add(CarteGen3);
 		}
 	}
+	
 	public void DistributionPversColonne()
 	{
 		DistributionColonne(Paquet, Colonne1, 1, 0);
@@ -51,9 +76,10 @@ public class PlateauDeJeu {
 
 		DistributionColonne(Paquet, Colonne0, 24, 28);
 	}
+	
 	public void DeplacePile(int choix1, int choix2, int NumLigneDeplace)
 	{
-		if (Fonctions.ConditionNUM(Choix2Colonne(choix1).get(Choix2Colonne(choix1).size()-NumLigneDeplace),
+		if (ConditionNUM(Choix2Colonne(choix1).get(Choix2Colonne(choix1).size()-NumLigneDeplace),
 				Choix2Colonne(choix2).get(Choix2Colonne(choix2).size() - 1)) && ConditionDeplacePile(choix1, choix2, NumLigneDeplace))
 		{
 			for (int i = NumLigneDeplace ; i != 0 ; i--)
@@ -63,6 +89,16 @@ public class PlateauDeJeu {
 			}
 		}
 	}
+	
+	public void DeplacePileAkRoi(int choix1, int choix2, int NumLigneDeplace)
+	{
+		for (int i = NumLigneDeplace ; i != 0 ; i--)
+		{			
+			Choix2Colonne(choix2).add(Choix2Colonne(choix1).get(Choix2Colonne(choix1).size()-i));			
+			Choix2Colonne(choix1).remove(Choix2Colonne(choix1).size()-i);
+		}
+	}
+	
 	public int NbrCarteAgir(Scanner sc)
 	{
 		System.out.println("Voulez-vous déplacer \n 1. Une carte ?\n 2. Plusieurs cartes ?");
@@ -75,14 +111,34 @@ public class PlateauDeJeu {
 		} else
 			return 1;
 	}
+	
 	public void DeplaceUneCarte(int choix1, int choix2) {
-		if (Fonctions.ConditionNUM(Choix2Colonne(choix1).get(Choix2Colonne(choix1).size() - 1),
+		if (ConditionNUM(Choix2Colonne(choix1).get(Choix2Colonne(choix1).size() - 1),
 				Choix2Colonne(choix2).get(Choix2Colonne(choix2).size() - 1)))
 		{
 			Choix2Colonne(choix2).add(Choix2Colonne(choix1).get(Choix2Colonne(choix1).size() - 1));
 			Choix2Colonne(choix1).remove(Choix2Colonne(choix1).size() - 1);
 		}
 	}
+	
+	public boolean ConditionNUM(Carte CarteBase, Carte CarteDessus) //On indique si l'ajout de la carte dans tel colonne est possible
+	{
+		if ((CarteBase.getNumCarteInt()+1) != (CarteDessus.getNumCarteInt()) || !Fonctions.ConditionCouleur(CarteBase, CarteDessus))
+			{
+			//Cas où la carte ne peut pas être déplacée dans la colonne choisie (cas où par exemple la valeur n'est pas un rang en dessous de la carte de la colonne choisie ET la couleur est la même que la carte de colonne choisie
+			System.out.println("Carte Base : "+CarteBase.toString()+" / Carte Dessus : "+CarteDessus.toString());
+				System.out.println("Déplacement interdit !");
+				return false;
+			}
+		else 
+		{	//Cas où la carte peut être déplacée dans la colonne choisie (cas où par exemple la valeur est un rang en dessous de la carte de la colonne choisie 
+			 //ET la couleur est différente de la carte de colonne choisie
+			System.out.println("Carte Base : "+CarteBase.toString()+" / Carte Dessus : "+CarteDessus.toString());
+			System.out.println("Déplacement autorisé !");
+			return true;
+		}
+	}
+	
 	public boolean ConditionDeplacePile(int choix1, int choix2, int NumLigneDeplace) {
 		int x = 0;
 		for (int i = NumLigneDeplace; i != 0; i--) {
@@ -96,13 +152,35 @@ public class PlateauDeJeu {
 			{System.out.println("impossible de deplacer des cartes non retournés");
 			return false;}
 	}
+	
+	public void DeplaceRoi(int choix1, int choix2, int NumLigneDeplace) {
+		if (EstUnRoi(choix1, choix2, NumLigneDeplace)&& Choix2Colonne(choix2).isEmpty()) 
+		{
+			System.out.println("Déplacement autorisé ! Roi");
+			Choix2Colonne(choix2).add(Choix2Colonne(choix1).get(Choix2Colonne(choix1).size() - NumLigneDeplace));
+			Choix2Colonne(choix1).remove(Choix2Colonne(choix1).get(Choix2Colonne(choix1).size() - NumLigneDeplace));
+		} else
+			{
+			System.out.println("Déplacement interdit ! Roi");
+			}
+	}
+	
+	public boolean EstUnRoi(int choix1, int choix2, int NumLigneDeplace)
+	{
+		if (Choix2Colonne(choix1).get(Choix2Colonne(choix1).size() - NumLigneDeplace).getNumCarte() == "Ro")
+			return true;
+		else 
+			return false;
+	}
+		
 	public void DeplaceUneCarteDeck(int choix1, int choix2)
 	{
-		if (Fonctions.ConditionNUM(Colonne0.get(0), Choix2Colonne(choix2).get(Choix2Colonne(choix2).size() - 1))) {
+		if (ConditionNUM(Colonne0.get(0), Choix2Colonne(choix2).get(Choix2Colonne(choix2).size() - 1))) {
 			Choix2Colonne(choix2).add(Colonne0.get(0));
 			Colonne0.remove(0);
 		}
 	}
+	
 	public void PiocheSuivante()
 	{
 		Colonne0.add(Colonne0.get(0));
@@ -204,14 +282,14 @@ public class PlateauDeJeu {
 			return Colonne0;
 		default:
 			return null;
-
 		}
 	}
 	public void Dessin() {//"Interface" du jeu avec le titre et les piles de carte
 		Fonctions.setDerniereCarteTrue(Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7);
 		System.out.println(
 				"\n---------------------------------------------- SOLITAIRE ♠ ♣ ♥ ♦ -------------------------------------------------");
-		System.out.println(Colonne0.get(0) + "\t\t\t\t\t [] [] [] [] \n\n");
+		System.out.println(Colonne0.get(0) + "\t\t\t\t "+ArraydArray4.get(1).get(0)+" "+ArraydArray4.get(0).get(0)+" "
+				+ ""+ArraydArray4.get(2).get(0)+" "+ArraydArray4.get(3).get(0)+" \n\n");
 		Affichage();
 		System.out.println(
 				"\n-------------------------------------------------------------------------------------------------------------------");
@@ -271,12 +349,17 @@ public class PlateauDeJeu {
 				return;
 			if (NumLigneDeplace == 1) 
 			{
-				if (choix1 != 8) 
+				if (choix1 != 8 && !EstUnRoi(choix1, choix2, NumLigneDeplace)) 
 					DeplaceUneCarte(choix1, choix2);
+				else if (EstUnRoi(choix1, choix2, NumLigneDeplace)&& Choix2Colonne(choix2).isEmpty())
+					DeplaceRoi(choix1, choix2, NumLigneDeplace);
 				else 
 					DeplaceUneCarteDeck(choix1, choix2);
 			} else
-				DeplacePile(choix1, choix2, NumLigneDeplace);
+				if(EstUnRoi(choix1, choix2, NumLigneDeplace))
+					DeplacePileAkRoi(choix1, choix2, NumLigneDeplace);
+				else
+					DeplacePile(choix1, choix2, NumLigneDeplace);
 			 }
 	}
 }

@@ -42,7 +42,6 @@ public class Fonctions {
 		}
 	}
 
-
 	public static boolean ConditionCouleur(Carte CarteBase, Carte CarteDessus) {// On compare la valeur de la carte choisie par choix1 (carte que l'utilisateur choisit) et la carte choisie par choix2 
 		//(colonne où l'utilisateur compte poser sa carte)
 	
