@@ -22,20 +22,20 @@ public class PlateauDeJeu {
 
 	public PlateauDeJeu() {//On distribue dans chaque colonne un nombre de cartes (1,2,3,4,5,6,7)
 		DistributionPaquet();
-		Collections.shuffle(Paquet); //On mélange le paquet de cartes
+		Collections.shuffle(Paquet); //On mÃ©lange le paquet de cartes
 		System.out.println(Paquet.toString());
 		DistributionPversColonne();
 	}
 	public void DistributionPaquet()
 	{
 		for (int i = 1; i < 14; i++) { //On affecte aux cartes leurs symboles
-			Carte CarteGen = new Carte(i, "Pi");
+			Carte CarteGen = new Carte(i, "â™ ");
 			Paquet.add(CarteGen);
-			Carte CarteGen1 = new Carte(i, "Ca");
+			Carte CarteGen1 = new Carte(i, "â™¦");
 			Paquet.add(CarteGen1);
-			Carte CarteGen2 = new Carte(i, "Tr");
+			Carte CarteGen2 = new Carte(i, "â™£");
 			Paquet.add(CarteGen2);
-			Carte CarteGen3 = new Carte(i, "Co");
+			Carte CarteGen3 = new Carte(i, "â™¥");
 			Paquet.add(CarteGen3);
 		}
 	}
@@ -65,11 +65,11 @@ public class PlateauDeJeu {
 	}
 	public int NbrCarteAgir(Scanner sc)
 	{
-		System.out.println("Voulez-vous déplacer \n 1. Une carte ?\n 2. Plusieurs cartes ?");
+		System.out.println("Voulez-vous dÃ©placer \n 1. Une carte ?\n 2. Plusieurs cartes ?");
 		int ChoixBase = sc.nextInt();
 		int NumLigneDeplace = 0;
 		if (ChoixBase == 2) {
-			System.out.println("Indiquer le nombre de cartes à deplacer !");
+			System.out.println("Indiquer le nombre de cartes Ã  deplacer !");
 			NumLigneDeplace = sc.nextInt();
 			return NumLigneDeplace;
 		} else
@@ -95,9 +95,19 @@ public class PlateauDeJeu {
 		Colonne0.add(Colonne0.get(0));
 		Colonne0.remove(0);
 	}
-	
+	public boolean ConditionPourWin()
+	{
+		if (Colonne1.isEmpty()&&Colonne2.isEmpty()&&Colonne3.isEmpty()&&Colonne4.isEmpty()
+				&&Colonne5.isEmpty()&&Colonne6.isEmpty()&&Colonne7.isEmpty())
+		{
+			System.out.println("FÃ©licitations vous avez gagnÃ© ! (â•¯Â°â–¡Â°ï¼‰â•¯ï¸µ â”»â”â”»");
+			return true;
+		}
+		else
+			return false;
+	}
 	public static void DistributionColonne(ArrayList<Carte> Paquet, ArrayList<Carte> Colonne, int CarteDistrib,
-			int IStart) { //On répartit les cartes dans chaque colonne (28 cartes à répartir)
+			int IStart) { //On rÃ©partit les cartes dans chaque colonne (28 cartes Ã  rÃ©partir)
 		for (int i = IStart; i != (CarteDistrib + IStart); i++) {
 			Colonne.add(Paquet.get(i));
 		}
@@ -106,57 +116,57 @@ public class PlateauDeJeu {
 
 		int SizeMax = Fonctions.SizeMax(Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7);
 
-		for (int i = 0; i != SizeMax; i++) // On met face cachée toutes les cartes d'une colonne sauf la dernière carte de la colonne
+		for (int i = 0; i != SizeMax; i++) // On met face cachÃ©e toutes les cartes d'une colonne sauf la derniÃ¨re carte de la colonne
 		{
 			if (i < Colonne1.size()) {
 				if (((Carte) Colonne1.get(i)).getFaceCarte() && !Colonne1.isEmpty())
 					System.out.print(Colonne1.get(i) + "  ");
 				else
-					System.out.print("????????" + "  ");
+					System.out.print("???????" + "  ");
 			} else
-				System.out.print("          ");
+				System.out.print("         ");
 			if (i < Colonne2.size()) {
 				if (((Carte) Colonne2.get(i)).getFaceCarte()&& !Colonne2.isEmpty())
 					System.out.print(Colonne2.get(i) + "  ");
 				else
-					System.out.print("????????" + "  ");
+					System.out.print("???????" + "  ");
 			} else
-				System.out.print("          ");
+				System.out.print("         ");
 			if (i < Colonne3.size()) {
 				if (((Carte) Colonne3.get(i)).getFaceCarte()&& !Colonne3.isEmpty())
 					System.out.print(Colonne3.get(i) + "  ");
 				else
-					System.out.print("????????" + "  ");
+					System.out.print("???????" + "  ");
 			} else
-				System.out.print("          ");
+				System.out.print("         ");
 			if (i < Colonne4.size()) {
 				if (((Carte) Colonne4.get(i)).getFaceCarte()&& !Colonne4.isEmpty())
 					System.out.print(Colonne4.get(i) + "  ");
 				else
-					System.out.print("????????" + "  ");
+					System.out.print("???????" + "  ");
 			} else
-				System.out.print("          ");
+				System.out.print("         ");
 			if (i < Colonne5.size()) {
 				if (((Carte) Colonne5.get(i)).getFaceCarte()&& !Colonne5.isEmpty())
 					System.out.print(Colonne5.get(i) + "  ");
 				else
-					System.out.print("????????" + "  ");
+					System.out.print("???????" + "  ");
 			} else
-				System.out.print("          ");
+				System.out.print("         ");
 			if (i < Colonne6.size()) {
 				if (((Carte) Colonne6.get(i)).getFaceCarte()&& !Colonne6.isEmpty())
 					System.out.print(Colonne6.get(i) + "  ");
 				else
-					System.out.print("????????" + "  ");
+					System.out.print("???????" + "  ");
 			} else
-				System.out.print("          ");
+				System.out.print("         ");
 			if (i < Colonne7.size()) {
 				if (((Carte) Colonne7.get(i)).getFaceCarte()&& !Colonne7.isEmpty())
 					System.out.print(Colonne7.get(i) + "  ");
 				else
-					System.out.print("????????" + "  ");
+					System.out.print("???????" + "  ");
 			} else
-				System.out.print("          ");
+				System.out.print("         ");
 			System.out.println("");
 
 		}
@@ -187,11 +197,21 @@ public class PlateauDeJeu {
 	public void Dessin() {//"Interface" du jeu avec le titre et les piles de carte
 		Fonctions.setDerniereCarteTrue(Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7);
 		System.out.println(
-				"\n------------------------------------------------- SOLITAIRE -------------------------------------------------");
+				"\n---------------------------------------------- SOLITAIRE â™  â™£ â™¥ â™¦ -------------------------------------------------");
 		System.out.println("[" + Colonne0.get(0) + "]\t\t\t\t\t [] [] [] [] \n\n");
 		Affichage();
 		System.out.println(
-				"\n-------------------------------------------------------------------------------------------------------------");
+				"\n-------------------------------------------------------------------------------------------------------------------");
+	}
+	public void AutoWin()
+	{
+		Colonne1.clear();
+		Colonne2.clear();
+		Colonne3.clear();
+		Colonne4.clear();
+		Colonne5.clear();
+		Colonne6.clear();
+		Colonne7.clear();
 	}
 	public void Menu() 
 	{
@@ -199,9 +219,9 @@ public class PlateauDeJeu {
 		int NumLigneDeplace = NbrCarteAgir(sc);
 		
 		System.out.println(
-				"Que voulez-vous selectionner ? \n 0. Une nouvelle Carte \n 1. La/les carte de la 1ère Colonne\n 2. La/les carte de la 2ième Colonne"
-						+ "\n 3. La/les carte de la 3ième Colonne\n 4. La/les carte de la 4ième Colonne\n 5. La/les carte de la 5ième Colonne"
-						+ "\n 6. La/les carte de la 6ième Colonne\n 7. La/les carte de la 7ième Colonne\n 8. La carte du Deck");
+				"Que voulez-vous selectionner ? \n 0. Une nouvelle Carte \n 1. La/les carte de la 1Ã¨re Colonne\n 2. La/les carte de la 2iÃ¨me Colonne"
+						+ "\n 3. La/les carte de la 3iÃ¨me Colonne\n 4. La/les carte de la 4iÃ¨me Colonne\n 5. La/les carte de la 5iÃ¨me Colonne"
+						+ "\n 6. La/les carte de la 6iÃ¨me Colonne\n 7. La/les carte de la 7iÃ¨me Colonne\n 8. La carte du Deck");
 
 		int choix1 = sc.nextInt();	
 		
@@ -216,8 +236,8 @@ public class PlateauDeJeu {
 			 * PROBLEME AK LE DECK . . . .. . .. . . . . . . . . . .  .. . . . . .. . .. . .  . . . .. . ......................... . . . ..  . .
 			 */
 			System.out.println(
-					"\nOu voulez-vous déplacer cette/ces carte(s) ?\n 1. Dans le 1er paquet\n 2. Dans le 2ième paquet\n 3. Dans le 3ième paquet"
-							+ "\n 4. Dans le 4ième paquet\n 5. Dans le 5ième paquet\n 6. Dans le 6ième paquet\n 7. Dans le 7ième paquet \n 8. Retour");
+					"\nOu voulez-vous dÃ©placer cette/ces carte(s) ?\n 1. Dans le 1er paquet\n 2. Dans le 2iÃ¨me paquet\n 3. Dans le 3iÃ¨me paquet"
+							+ "\n 4. Dans le 4iÃ¨me paquet\n 5. Dans le 5iÃ¨me paquet\n 6. Dans le 6iÃ¨me paquet\n 7. Dans le 7iÃ¨me paquet \n 8. Retour");
 			int choix2 = sc.nextInt();
 			if (choix2 == 8) 
 				return;

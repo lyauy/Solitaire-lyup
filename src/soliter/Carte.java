@@ -1,7 +1,7 @@
 package soliter;
 
 
-public class Carte { //Paramètres de la carte : symbole, numéro et face carte (cachée ou montrée)
+public class Carte { //ParamÃ¨tres de la carte : symbole, numÃ©ro et face carte (cachÃ©e ou montrÃ©e)
 	private String Symbole;
 	private String NumeroCarte;
 	private boolean FaceCarte;
@@ -37,12 +37,12 @@ public class Carte { //Paramètres de la carte : symbole, numéro et face carte (c
 	} 
 	public String getCouleur()
 	{
-		if (this.getSymboleCarte() == "Pi" || this.getSymboleCarte() == "Tr")
+		if (this.getSymboleCarte() == "â™ " || this.getSymboleCarte() == "â™£")
 			return "Noir";
 		else
 			return "Rouge";
 	}
-	public String NumTranslate(int NbrNum) { //Convertir les dernières cartes 11,12 et 13 en Valet (Va), Dame (Da) et Roi (Ro)
+	public String NumTranslate(int NbrNum) { //Convertir les derniÃ¨res cartes 11,12 et 13 en Valet (Va), Dame (Da) et Roi (Ro)
 		String NumCarte = "NULL";
 		switch (NbrNum) {
 		case 10:
