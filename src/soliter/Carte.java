@@ -11,7 +11,7 @@ public class Carte { //Paramètres de la carte : symbole, numéro et face carte (c
 		NumCarteInt = i;
 		NumeroCarte = NumTranslate(i);
 		Symbole = Psymbole;
-		FaceCarte = false;
+		FaceCarte = true;
 	}
 
 	public String getNumCarte() {

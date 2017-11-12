@@ -51,6 +51,51 @@ public class PlateauDeJeu {
 
 		DistributionColonne(Paquet, Colonne0, 24, 28);
 	}
+	public void DeplacePile(int choix1, int choix2, int NumLigneDeplace)
+	{
+		for (int i = NumLigneDeplace ; i != 0 ; i--)
+		{			
+			Choix2Colonne(choix2).add(Choix2Colonne(choix1).get(Choix2Colonne(choix1).size()-i));			
+			Choix2Colonne(choix1).remove(Choix2Colonne(choix1).size()-i);
+		}
+	}
+	public int NbrCarteAgir(Scanner sc)
+	{
+		System.out.println("Voulez-vous déplacer \n 1. Une carte ?\n 2. Plusieurs cartes ?");
+		int ChoixBase = sc.nextInt();
+		int NumLigneDeplace = 0;
+		if (ChoixBase == 2) {
+			System.out.println("Indiquer le nombre de cartes à deplacer !");
+			NumLigneDeplace = sc.nextInt();
+			return NumLigneDeplace;
+		} else
+			return 1;
+	}
+	public void DeplaceUneCarte(int choix1, int choix2) {
+		if (Fonctions.ConditionNUM(Choix2Colonne(choix1).get(Choix2Colonne(choix1).size() - 1),
+				Choix2Colonne(choix2).get(Choix2Colonne(choix2).size() - 1)))
+		{
+			Choix2Colonne(choix2).add(Choix2Colonne(choix1).get(Choix2Colonne(choix1).size() - 1));
+			Choix2Colonne(choix1).remove(Choix2Colonne(choix1).size() - 1);
+		}
+	}
+	public void DeplaceUneCarteDeck(int choix1, int choix2)
+	{
+		if (Fonctions.ConditionNUM(Colonne0.get(0), Choix2Colonne(choix2).get(Choix2Colonne(choix2).size() - 1))) {
+			Choix2Colonne(choix2).add(Colonne0.get(0));
+			Colonne0.remove(0);
+		}
+	}
+	public void PiocheSuivante()
+	{
+		Colonne0.add(Colonne0.get(0));
+		Colonne0.remove(0);
+	}
+	
+	public void PremierChoix()
+	{		
+
+	}
 	public static void DistributionColonne(ArrayList<Carte> Paquet, ArrayList<Carte> Colonne, int CarteDistrib,
 			int IStart) { //On répartit les cartes dans chaque colonne (28 cartes à répartir)
 		for (int i = IStart; i != (CarteDistrib + IStart); i++) {
@@ -151,56 +196,39 @@ public class PlateauDeJeu {
 	public void Menu() 
 	{
 		sc = new Scanner(System.in);
+		int NumLigneDeplace = NbrCarteAgir(sc);
+		
 		System.out.println(
-				"Que voulez-vous selectionner ? \n0. Une nouvelle Carte \n1. La carte de la 1ère Colonne\n2. La carte de la 2ième Colonne"
-						+ "\n3. La carte de la 3ième Colonne\n4. La carte de la 4ième Colonne\n5. La carte de la 5ième Colonne"
-						+ "\n6. La carte de la 6ième Colonne\n7. La carte de la 7ième Colonne\n8. La carte du Deck");
+				"Que voulez-vous selectionner ? \n 0. Une nouvelle Carte \n 1. La/les carte de la 1ère Colonne\n 2. La/les carte de la 2ième Colonne"
+						+ "\n 3. La/les carte de la 3ième Colonne\n 4. La/les carte de la 4ième Colonne\n 5. La/les carte de la 5ième Colonne"
+						+ "\n 6. La/les carte de la 6ième Colonne\n 7. La/les carte de la 7ième Colonne\n 8. La carte du Deck");
 
-		int choix1 = sc.nextInt();//on demande à l'utilisateur de piocher une nouvelle carte, ou bien de récupérer une carte des 7 colonnes ou du deck
-
+		int choix1 = sc.nextInt();	
 		
-		
-		if (choix1 != 0) 
+		if (choix1 == 0) 
 		{
+			PiocheSuivante();
+		} 
+		else {
 			System.out.println("Vous avez la carte '"+Choix2Colonne(choix1).get(Choix2Colonne(choix1)
 					.size() - 1)+"' en main.");
 			/**
 			 * PROBLEME AK LE DECK . . . .. . .. . . . . . . . . . .  .. . . . . .. . .. . .  . . . .. . ......................... . . . ..  . .
 			 */
 			System.out.println(
-					"Ou voulez-vous déplacer cette carte ?\n 1. Dans le 1er paquet\n 2. Dans le 2ième paquet\n 3. Dans le 3ième paquet"
+					"Ou voulez-vous déplacer cette/ces carte(s) ?\n 1. Dans le 1er paquet\n 2. Dans le 2ième paquet\n 3. Dans le 3ième paquet"
 							+ "\n 4. Dans le 4ième paquet\n 5. Dans le 5ième paquet\n 6. Dans le 6ième paquet\n 7. Dans le 7ième paquet \n 8. Retour");
-			int choix2 = sc.nextInt();//on demande à l'utilisateur de poser sa carte dans une colonne. Il peut retourner à l'étape d'avant avec retour.
-
-			if(choix2 == 8)
+			int choix2 = sc.nextInt();
+			if (choix2 == 8) 
+				return;
+			if (NumLigneDeplace == 1) 
 			{
-				return; //retour à la première étape "que voulez-vous séléctionner"
-			}
-						
-
 				if (choix1 != 8) 
-				{
-					if (Fonctions.ConditionNUM(Choix2Colonne(choix1).get(Choix2Colonne(choix1)
-							.size() - 1),Choix2Colonne(choix2).get(Choix2Colonne(choix2).size() - 1) ))
-					{	Choix2Colonne(choix2).add(Choix2Colonne(choix1).get(Choix2Colonne(choix1).size() - 1));
-						
-						Choix2Colonne(choix1).remove(Choix2Colonne(choix1).size() - 1);
-					}
-				}
-				else
-				{
-					if( Fonctions.ConditionNUM(Colonne0.get(0), Choix2Colonne(choix2).get(Choix2Colonne(choix2).size() - 1) ))
-					{
-						Choix2Colonne(choix2).add(Colonne0.get(0));
-						Colonne0.remove(0);
-					}
-				}
-			
-			
-		} 
-		else {
-					Colonne0.add(Colonne0.get(0));
-					Colonne0.remove(0);
-			}
+					DeplaceUneCarte(choix1, choix2);
+				else 
+					DeplaceUneCarteDeck(choix1, choix2);
+			} else
+				DeplacePile(choix1, choix2, NumLigneDeplace);
+			 }
 	}
 }
