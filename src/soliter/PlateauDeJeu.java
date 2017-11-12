@@ -53,10 +53,14 @@ public class PlateauDeJeu {
 	}
 	public void DeplacePile(int choix1, int choix2, int NumLigneDeplace)
 	{
-		for (int i = NumLigneDeplace ; i != 0 ; i--)
-		{			
-			Choix2Colonne(choix2).add(Choix2Colonne(choix1).get(Choix2Colonne(choix1).size()-i));			
-			Choix2Colonne(choix1).remove(Choix2Colonne(choix1).size()-i);
+		if (Fonctions.ConditionNUM(Choix2Colonne(choix1).get(Choix2Colonne(choix1).size()-NumLigneDeplace),
+				Choix2Colonne(choix2).get(Choix2Colonne(choix2).size() - 1)))
+		{
+			for (int i = NumLigneDeplace ; i != 0 ; i--)
+			{			
+				Choix2Colonne(choix2).add(Choix2Colonne(choix1).get(Choix2Colonne(choix1).size()-i));			
+				Choix2Colonne(choix1).remove(Choix2Colonne(choix1).size()-i);
+			}
 		}
 	}
 	public int NbrCarteAgir(Scanner sc)
@@ -92,10 +96,6 @@ public class PlateauDeJeu {
 		Colonne0.remove(0);
 	}
 	
-	public void PremierChoix()
-	{		
-
-	}
 	public static void DistributionColonne(ArrayList<Carte> Paquet, ArrayList<Carte> Colonne, int CarteDistrib,
 			int IStart) { //On répartit les cartes dans chaque colonne (28 cartes à répartir)
 		for (int i = IStart; i != (CarteDistrib + IStart); i++) {
@@ -210,13 +210,13 @@ public class PlateauDeJeu {
 			PiocheSuivante();
 		} 
 		else {
-			System.out.println("Vous avez la carte '"+Choix2Colonne(choix1).get(Choix2Colonne(choix1)
-					.size() - 1)+"' en main.");
+			for (int y = NumLigneDeplace; y != 0; y--)
+				System.out.println("\nVous avez la/les carte(s) '"+Choix2Colonne(choix1).get(Choix2Colonne(choix1).size()-y)+"' en main.");
 			/**
 			 * PROBLEME AK LE DECK . . . .. . .. . . . . . . . . . .  .. . . . . .. . .. . .  . . . .. . ......................... . . . ..  . .
 			 */
 			System.out.println(
-					"Ou voulez-vous déplacer cette/ces carte(s) ?\n 1. Dans le 1er paquet\n 2. Dans le 2ième paquet\n 3. Dans le 3ième paquet"
+					"\nOu voulez-vous déplacer cette/ces carte(s) ?\n 1. Dans le 1er paquet\n 2. Dans le 2ième paquet\n 3. Dans le 3ième paquet"
 							+ "\n 4. Dans le 4ième paquet\n 5. Dans le 5ième paquet\n 6. Dans le 6ième paquet\n 7. Dans le 7ième paquet \n 8. Retour");
 			int choix2 = sc.nextInt();
 			if (choix2 == 8) 
