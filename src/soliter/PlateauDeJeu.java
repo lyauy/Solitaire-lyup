@@ -122,51 +122,51 @@ public class PlateauDeJeu {
 				if (((Carte) Colonne1.get(i)).getFaceCarte() && !Colonne1.isEmpty())
 					System.out.print(Colonne1.get(i) + "  ");
 				else
-					System.out.print("???????" + "  ");
+					System.out.print("[???????]" + "  ");
 			} else
-				System.out.print("         ");
+				System.out.print("           ");
 			if (i < Colonne2.size()) {
 				if (((Carte) Colonne2.get(i)).getFaceCarte()&& !Colonne2.isEmpty())
 					System.out.print(Colonne2.get(i) + "  ");
 				else
-					System.out.print("???????" + "  ");
+					System.out.print("[???????]" + "  ");
 			} else
-				System.out.print("         ");
+				System.out.print("           ");
 			if (i < Colonne3.size()) {
 				if (((Carte) Colonne3.get(i)).getFaceCarte()&& !Colonne3.isEmpty())
 					System.out.print(Colonne3.get(i) + "  ");
 				else
-					System.out.print("???????" + "  ");
+					System.out.print("[???????]" + "  ");
 			} else
-				System.out.print("         ");
+				System.out.print("           ");
 			if (i < Colonne4.size()) {
 				if (((Carte) Colonne4.get(i)).getFaceCarte()&& !Colonne4.isEmpty())
 					System.out.print(Colonne4.get(i) + "  ");
 				else
-					System.out.print("???????" + "  ");
+					System.out.print("[???????]" + "  ");
 			} else
-				System.out.print("         ");
+				System.out.print("           ");
 			if (i < Colonne5.size()) {
 				if (((Carte) Colonne5.get(i)).getFaceCarte()&& !Colonne5.isEmpty())
 					System.out.print(Colonne5.get(i) + "  ");
 				else
-					System.out.print("???????" + "  ");
+					System.out.print("[???????]" + "  ");
 			} else
-				System.out.print("         ");
+				System.out.print("           ");
 			if (i < Colonne6.size()) {
 				if (((Carte) Colonne6.get(i)).getFaceCarte()&& !Colonne6.isEmpty())
 					System.out.print(Colonne6.get(i) + "  ");
 				else
-					System.out.print("???????" + "  ");
+					System.out.print("[???????]" + "  ");
 			} else
-				System.out.print("         ");
+				System.out.print("           ");
 			if (i < Colonne7.size()) {
 				if (((Carte) Colonne7.get(i)).getFaceCarte()&& !Colonne7.isEmpty())
 					System.out.print(Colonne7.get(i) + "  ");
 				else
-					System.out.print("???????" + "  ");
+					System.out.print("[???????]" + "  ");
 			} else
-				System.out.print("         ");
+				System.out.print("           ");
 			System.out.println("");
 
 		}
@@ -198,7 +198,7 @@ public class PlateauDeJeu {
 		Fonctions.setDerniereCarteTrue(Colonne0, Colonne1, Colonne2, Colonne3, Colonne4, Colonne5, Colonne6, Colonne7);
 		System.out.println(
 				"\n---------------------------------------------- SOLITAIRE ♠ ♣ ♥ ♦ -------------------------------------------------");
-		System.out.println("[" + Colonne0.get(0) + "]\t\t\t\t\t [] [] [] [] \n\n");
+		System.out.println(Colonne0.get(0) + "\t\t\t\t\t [] [] [] [] \n\n");
 		Affichage();
 		System.out.println(
 				"\n-------------------------------------------------------------------------------------------------------------------");

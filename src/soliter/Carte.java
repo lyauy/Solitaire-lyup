@@ -33,7 +33,7 @@ public class Carte { //Paramètres de la carte : symbole, numéro et face carte 
 		this.FaceCarte = true;
 	}
 	public String toString() { 
-	    return getNumCarte()+" de "+getSymboleCarte();
+	    return "["+getNumCarte()+" de "+getSymboleCarte()+"]";
 	} 
 	public String getCouleur()
 	{
