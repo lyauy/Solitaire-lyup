@@ -29,7 +29,6 @@ public class PlateauDeJeu {
 	public PlateauDeJeu() {//On distribue dans chaque colonne un nombre de cartes (1,2,3,4,5,6,7)
 		DistributionPaquet();
 		Collections.shuffle(Paquet); //On mélange le paquet de cartes
-		System.out.println(Paquet.toString());
 		DistributionPversColonne();
 		Creation4Array();
 	}
@@ -480,7 +479,7 @@ public class PlateauDeJeu {
 					CarteEnMain(choix1, NumLigneDeplace);	
 				System.out.println(
 						"\nOu voulez-vous déplacer cette/ces carte(s) ?\n 1. Dans le 1er paquet\n 2. Dans le 2ième paquet\n 3. Dans le 3ième paquet"
-								+ "\n 4. Dans le 4ième paquet\n 5. Dans le 5ième paquet\n 6. Dans le 6ième paquet\n 7. Dans le 7ième paquet \n 8. Retour\n 9. Dans les cases attributées");
+								+ "\n 4. Dans le 4ième paquet\n 5. Dans le 5ième paquet\n 6. Dans le 6ième paquet\n 7. Dans le 7ième paquet \n 8. Retour\n 9. Dans les piles");
 				int choix2 = sc.nextInt();
 				if (choix2 == 8) 
 					return;
@@ -510,7 +509,7 @@ public class PlateauDeJeu {
 						DeplacePile(choix1, choix2, NumLigneDeplace);
 				 }
 		}
-		catch(InputMismatchException | java.lang.NullPointerException | java.lang.ArrayIndexOutOfBoundsException e)
+		catch(InputMismatchException | java.lang.NullPointerException | java.lang.ArrayIndexOutOfBoundsException | IllegalArgumentException e)
 		{
 			System.out.println(e+" Veuillez saisir un nombre valide !");
 		}
