@@ -54,7 +54,7 @@ public class PlateauDeJeu {
 	public void DeplacePile(int choix1, int choix2, int NumLigneDeplace)
 	{
 		if (Fonctions.ConditionNUM(Choix2Colonne(choix1).get(Choix2Colonne(choix1).size()-NumLigneDeplace),
-				Choix2Colonne(choix2).get(Choix2Colonne(choix2).size() - 1)))
+				Choix2Colonne(choix2).get(Choix2Colonne(choix2).size() - 1)) && ConditionDeplacePile(choix1, choix2, NumLigneDeplace))
 		{
 			for (int i = NumLigneDeplace ; i != 0 ; i--)
 			{			
@@ -82,6 +82,19 @@ public class PlateauDeJeu {
 			Choix2Colonne(choix2).add(Choix2Colonne(choix1).get(Choix2Colonne(choix1).size() - 1));
 			Choix2Colonne(choix1).remove(Choix2Colonne(choix1).size() - 1);
 		}
+	}
+	public boolean ConditionDeplacePile(int choix1, int choix2, int NumLigneDeplace) {
+		int x = 0;
+		for (int i = NumLigneDeplace; i != 0; i--) {
+			if (Choix2Colonne(choix1).get(Choix2Colonne(choix1).size() - i).getFaceCarte()) {
+				x++;
+			}
+		}
+		if (x == NumLigneDeplace)
+			return true;
+		else
+			{System.out.println("impossible de deplacer des cartes non retournés");
+			return false;}
 	}
 	public void DeplaceUneCarteDeck(int choix1, int choix2)
 	{
@@ -213,28 +226,43 @@ public class PlateauDeJeu {
 		Colonne6.clear();
 		Colonne7.clear();
 	}
+	public void CarteEnMain(int choix1, int NumLigneDeplace) {
+		int x = 0;
+		for (int y = NumLigneDeplace; y != 0; y--) {
+			if (Choix2Colonne(choix1).get(Choix2Colonne(choix1).size() - y).getFaceCarte())
+				x++;	
+		}
+		if (x == NumLigneDeplace) {
+			System.out.print("\nVous avez la/les carte(s) : ");
+			for (int y = NumLigneDeplace; y != 0; y--)
+				System.out.print(Choix2Colonne(choix1).get(Choix2Colonne(choix1).size() - y)+" ");
+			System.out.println("en main.");
+		}
+	}
 	public void Menu() 
 	{
-		sc = new Scanner(System.in);
-		int NumLigneDeplace = NbrCarteAgir(sc);
-		
+		sc = new Scanner(System.in);		
 		System.out.println(
 				"Que voulez-vous selectionner ? \n 0. Une nouvelle Carte \n 1. La/les carte de la 1ère Colonne\n 2. La/les carte de la 2ième Colonne"
 						+ "\n 3. La/les carte de la 3ième Colonne\n 4. La/les carte de la 4ième Colonne\n 5. La/les carte de la 5ième Colonne"
 						+ "\n 6. La/les carte de la 6ième Colonne\n 7. La/les carte de la 7ième Colonne\n 8. La carte du Deck");
 
 		int choix1 = sc.nextInt();	
+		int NumLigneDeplace =0;
+		if (choix1 == 8 || choix1 == 0)
+			NumLigneDeplace = 1;
+		else
+			NumLigneDeplace = NbrCarteAgir(sc);
 		
 		if (choix1 == 0) 
 		{
 			PiocheSuivante();
 		} 
 		else {
-			for (int y = NumLigneDeplace; y != 0; y--)
-				System.out.println("\nVous avez la/les carte(s) '"+Choix2Colonne(choix1).get(Choix2Colonne(choix1).size()-y)+"' en main.");
-			/**
-			 * PROBLEME AK LE DECK . . . .. . .. . . . . . . . . . .  .. . . . . .. . .. . .  . . . .. . ......................... . . . ..  . .
-			 */
+			if (choix1 == 8)	
+				System.out.println("\nVous avez la carte : "+Colonne0.get(0)+" en main.");
+			else
+				CarteEnMain(choix1, NumLigneDeplace);	
 			System.out.println(
 					"\nOu voulez-vous déplacer cette/ces carte(s) ?\n 1. Dans le 1er paquet\n 2. Dans le 2ième paquet\n 3. Dans le 3ième paquet"
 							+ "\n 4. Dans le 4ième paquet\n 5. Dans le 5ième paquet\n 6. Dans le 6ième paquet\n 7. Dans le 7ième paquet \n 8. Retour");

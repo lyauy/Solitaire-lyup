@@ -29,14 +29,14 @@ public class Fonctions {
 		if ((CarteBase.getNumCarteInt()+1) != (CarteDessus.getNumCarteInt()) || !ConditionCouleur(CarteBase, CarteDessus))
 			{
 			//Cas où la carte ne peut pas être déplacée dans la colonne choisie (cas où par exemple la valeur n'est pas un rang en dessous de la carte de la colonne choisie ET la couleur est la même que la carte de colonne choisie
-			System.out.println("Carte Base : "+(CarteBase.getNumCarteInt())+" de "+(CarteBase.getSymboleCarte())+" / Carte Dessus : "+(CarteDessus.getNumCarteInt())+" de "+(CarteDessus.getSymboleCarte()));
+			System.out.println("Carte Base : "+CarteBase.toString()+" / Carte Dessus : "+CarteDessus.toString());
 				System.out.println("Déplacement interdit !");
 				return false;
 			}
 		else 
 		{	//Cas où la carte peut être déplacée dans la colonne choisie (cas où par exemple la valeur est un rang en dessous de la carte de la colonne choisie 
 			 //ET la couleur est différente de la carte de colonne choisie
-			System.out.println("Carte Base : "+(CarteBase.getNumCarteInt())+" de "+(CarteBase.getSymboleCarte())+" / Carte Dessus : "+(CarteDessus.getNumCarteInt())+" de "+(CarteDessus.getSymboleCarte()));
+			System.out.println("Carte Base : "+CarteBase.toString()+" / Carte Dessus : "+CarteDessus.toString());
 			System.out.println("Déplacement autorisé !");
 			return true;
 		}

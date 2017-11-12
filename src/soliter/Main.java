@@ -10,7 +10,7 @@ public class Main {
 		{
 			A.Dessin();
 			A.Menu();
-			A.AutoWin();
+			//A.AutoWin();
 		}
 	}
 }
