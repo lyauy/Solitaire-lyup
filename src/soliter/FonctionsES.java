@@ -22,18 +22,11 @@ public class FonctionsES
 	public int SizeMax(ArrayList<ArrayList<Carte>> nbColonne) { //On affecte à SizeMax la valeur de la taille d'une colonne, on en a besoin pour ne pas cacher la dernière carte d'une colonne
 
 		int SizeMax = nbColonne.get(0).size();
-		if (SizeMax < nbColonne.get(1).size())
-			SizeMax = nbColonne.get(1).size();
-		if (SizeMax < nbColonne.get(2).size())
-			SizeMax = nbColonne.get(2).size();
-		if (SizeMax < nbColonne.get(3).size())
-			SizeMax = nbColonne.get(3).size();
-		if (SizeMax < nbColonne.get(4).size())
-			SizeMax = nbColonne.get(4).size();
-		if (SizeMax < nbColonne.get(5).size())
-			SizeMax = nbColonne.get(5).size();
-		if (SizeMax < nbColonne.get(6).size())
-			SizeMax = nbColonne.get(6).size();
+		for (int i = 0; i < 7; i++)
+		{
+			if (SizeMax < nbColonne.get(i).size())
+				SizeMax = nbColonne.get(i).size();
+		}
 		return SizeMax;
 	}
 	
