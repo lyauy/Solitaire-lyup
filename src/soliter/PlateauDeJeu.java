@@ -285,7 +285,7 @@ public class PlateauDeJeu extends FonctionsES{
 	
 	public void Affichage() {
 
-		int SizeMax = SizeMax(nbColonne.get(0), nbColonne.get(1), nbColonne.get(2), nbColonne.get(3), nbColonne.get(4), nbColonne.get(5), nbColonne.get(6));
+		int SizeMax = SizeMax(nbColonne);
 
 		for (int i = 0; i != SizeMax; i++) // On met face cachée toutes les cartes d'une colonne sauf la dernière carte de la colonne
 		{

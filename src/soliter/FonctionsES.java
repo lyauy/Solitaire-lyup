@@ -19,23 +19,21 @@ public class FonctionsES
 			return 1;
 	}
 		
-	public int SizeMax(ArrayList<Carte> Colonne1, ArrayList<Carte> Colonne2, ArrayList<Carte> Colonne3,
-			ArrayList<Carte> Colonne4, ArrayList<Carte> Colonne5, ArrayList<Carte> Colonne6,
-			ArrayList<Carte> Colonne7) { //On affecte à SizeMax la valeur de la taille d'une colonne, on en a besoin pour ne pas cacher la dernière carte d'une colonne
+	public int SizeMax(ArrayList<ArrayList<Carte>> nbColonne) { //On affecte à SizeMax la valeur de la taille d'une colonne, on en a besoin pour ne pas cacher la dernière carte d'une colonne
 
-		int SizeMax = Colonne1.size();
-		if (SizeMax < Colonne2.size())
-			SizeMax = Colonne2.size();
-		if (SizeMax < Colonne3.size())
-			SizeMax = Colonne3.size();
-		if (SizeMax < Colonne4.size())
-			SizeMax = Colonne4.size();
-		if (SizeMax < Colonne5.size())
-			SizeMax = Colonne5.size();
-		if (SizeMax < Colonne6.size())
-			SizeMax = Colonne6.size();
-		if (SizeMax < Colonne7.size())
-			SizeMax = Colonne7.size();
+		int SizeMax = nbColonne.get(0).size();
+		if (SizeMax < nbColonne.get(1).size())
+			SizeMax = nbColonne.get(1).size();
+		if (SizeMax < nbColonne.get(2).size())
+			SizeMax = nbColonne.get(2).size();
+		if (SizeMax < nbColonne.get(3).size())
+			SizeMax = nbColonne.get(3).size();
+		if (SizeMax < nbColonne.get(4).size())
+			SizeMax = nbColonne.get(4).size();
+		if (SizeMax < nbColonne.get(5).size())
+			SizeMax = nbColonne.get(5).size();
+		if (SizeMax < nbColonne.get(6).size())
+			SizeMax = nbColonne.get(6).size();
 		return SizeMax;
 	}
 	
