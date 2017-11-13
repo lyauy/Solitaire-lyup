@@ -9,7 +9,7 @@ public class Carte { //Paramètres de la carte : symbole, numéro et face carte 
 	
 	public Carte(int i,String Psymbole) { //Constructeur de la classe carte
 		NumCarteInt = i;
-		NumeroCarte = NumTranslate(i);
+		NumeroCarte = numTranslate(i);
 		Symbole = Psymbole;
 		FaceCarte = false;
 	}
@@ -49,7 +49,7 @@ public class Carte { //Paramètres de la carte : symbole, numéro et face carte 
 			return "Rouge";
 	}
 	
-	public String NumTranslate(int NbrNum) { //Convertir les dernières cartes 11,12 et 13 en Valet (Va), Dame (Da) et Roi (Ro)
+	public String numTranslate(int NbrNum) { //Convertir les dernières cartes 11,12 et 13 en Valet (Va), Dame (Da) et Roi (Ro)
 		String NumCarte = "NULL";
 		switch (NbrNum) {
 		case 10:
